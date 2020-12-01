@@ -12,20 +12,44 @@
 </head>
 <body>
 <%
+//inc
 String inc = "intro.jsp";
 if(request.getParameter("inc") != null){
 	inc = request.getParameter("inc");
 }
 
+//sub
+String sub = "./jquery/menu.jsp";
+if(request.getParameter("sub") != null){
+	sub = request.getParameter("sub");
+}
+
 %>
 <div id='index'>
-	<header id='header'>헤더</header>
+	<header id='header'>
+		<nav id='nav'>
+			<ul>
+				<li><a href='index.jsp'>HOME</a></li>
+				<li><a href='index.jsp?sub=./jquery/menu.jsp'>JQUERY</a></li>
+				<li><a href='index.jsp?sub=./ajax/menu.jsp'>AJAX</a></li>
+				<li><a href='index.jsp?sub=./mybatis/menu.jsp'>MYBATIS</a></li>
+				<li>방명록</li>
+				<li>게시판</li>
+				<li>회원관리</li>
+			</ul>
+		</nav>
+	</header>
+	
+	
 	<section id='contents'>
 		<article class='content'>
 			<jsp:include page="<%=inc %>"/>
 		</article>
 		<aside class='aside'>
 			<img src='http://placehold.it/150X100'/>
+			<div id='sub_menu'>
+				<jsp:include page="<%=sub %>" />
+			</div>
 		</aside>
 	</section>
 	<footer id='footer'>융합 S/W 개발(주)</footer>
@@ -36,7 +60,8 @@ if(request.getParameter("inc") != null){
 	$('*').css('padding', '0px');
 	//패딩의 증가의 영향을 최소화하기위한 조치
 	$('*').css('box-sizing', 'border-box');
-
+	$('a').css('text-decoration', 'none'); //링크들의 대쉬 없애기
+	
 	//index페이지의 넓이와 중앙배치
 	$('#index').css('width', '800px');
 	$('#index').css('margin', 'auto');
@@ -45,6 +70,33 @@ if(request.getParameter("inc") != null){
 	$('#index > #header').css('height', '150px');
 	$('#index > #header').css('background-color', '#ccc');
 	$('#index > #header').css('margin-top', '5px');
+	$('#index > #header').css('position', 'relative');
+
+	//header > nav
+	//메뉴위치오른쪽아래로 이동
+	$('#header > #nav').css({
+		'position': 'absolute',
+		'right' : '2px',
+		'bottom' : '2px'
+		})
+
+	//도트를 빼줌
+	$('#header > nav > ul').css({
+		'list-style' : 'none',  
+		})
+
+	//메뉴인라인, 색상, 중간정렬 해주기
+	$('#header > nav > ul> li').css({
+		'display' : 'inline-block',
+		'padding' : '3px',
+		'width'	  : '70px',
+		'background-color' : '#99f',
+		'text-align' : 'center',
+		})
+		
+	//메뉴왼쪽 오른쪽만 둥글게
+	$('#header > #nav > ul > li').first().css('border-radius', '10px 0 0 10px');	
+	$('#header > #nav > ul > li').last().css('border-radius', '0 10px 10px 0' );
 
 	//contents는 최소높이만
 	//height는 고정, min-height는 유동성(작아지지는않고지가알아서커짐)
@@ -78,8 +130,15 @@ if(request.getParameter("inc") != null){
 	$('#index > #contents > .aside').css({
 		'width' : '150px',
 		'float' : 'left'
-				
 		});
+
+	$('#index > #contents > .aside > #sub_menu').css({
+		'width' : '150px'
+		});
+
+	$('#index > #contents > .aside > #sub_menu > ol').css({
+		'margin-left' : '17px'
+		})
 
 	
 </script>
