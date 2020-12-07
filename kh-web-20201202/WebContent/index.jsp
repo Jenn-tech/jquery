@@ -40,7 +40,6 @@ if(request.getParameter("sub") != null){
 		</nav>
 	</header>
 	
-	
 	<section id='contents'>
 		<article class='content'>
 			<jsp:include page="<%=inc %>"/>
@@ -100,7 +99,7 @@ if(request.getParameter("sub") != null){
 
 	//contents는 최소높이만
 	//height는 고정, min-height는 유동성(작아지지는않고지가알아서커짐)
-	$('#index > #contents').css('min-height', '250px');
+	$('#index > #contents').css('min-height', '600px');
 	
 	//footer 높이와 바탕색
 //	$('#index > #footer').css('height', '100px');
