@@ -1,3 +1,5 @@
+<%@page import="java.util.Arrays"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="bean.EmpDao"%>
 <%@page import="bean.EmpVo"%>
 <%@page import="java.util.List"%>
@@ -19,17 +21,27 @@
  //dao의 search라는 메소드 실행 findStr에 abc라는 값이 들어감, 그 실행결과가 list타입의 EmpVo타입의 반환형을 갖고 있는것
  //List<EmpVo> search(String a)라는 메소드가 EmpDao안에 있겠구나라고 생각해야함
    List<EmpVo> list = dao.search(findStr);
-   StringBuilder sb = new StringBuilder();
+   List<String> sb = new ArrayList<String>();
    
 	//%s-문자열(string), %d-정수형(digit), %c-문자(char), %f-실수(float)
-   String fmt = "<div class='emp'>"
+   /*
+	String fmt = "<div class='emp'>"
               + "  <div>사번:%d</div>"
               + "  <div>성명:%s</div>"
               + "  <div>이메일:%s</div>"
               + "  <div>연락처:%s</div>"
               + "  <div>급여:%10.1f</div>"
               + "</div>";
-		   
+	*/	   
+ //[{'id : '%s', 'name' : '%s', 'email' : '%s', 'phone' : '%s', 'salary' : '%f'}, {}]            
+	String fmt = "{"
+			   + " 'id' : '%d', "
+               + " 'name' : '%s', "
+               + " 'email' : '%s', "
+               + " 'phone' : '%s', "
+               + " 'salary' : '%10.1f' "
+               + "}";
+             
    //리스트를 이런식으로 looping
    for(EmpVo vo : list){//향상된 for문
 		String str = String.format(fmt, //fmt라는 포맷으로
@@ -39,13 +51,14 @@
 				vo.getPhone_number(),	//네번째 %s
 				vo.getSalary()	//다섯번째 %10.1f
 				);
-		sb.append(str); 
+   		str = str.replaceAll("'", "\"");
+		sb.add(str); 
 		//String : 고정문자열(탐색-메모리공간확보-저장의 프로세스라서 속도가 느림)
 		//stringbuilder나 buffer는 저장만함
 		
    }
    
-   out.print(sb.toString());
+   out.print(Arrays.toString(sb.toArray()));
 
 	
 	

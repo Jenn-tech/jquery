@@ -10,6 +10,7 @@
 		width : 400px;
 		height : 250px;
 		background-color : #eee;
+		
 	}
 </style>
 </head>

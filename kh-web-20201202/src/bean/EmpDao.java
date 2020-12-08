@@ -24,7 +24,10 @@ public class EmpDao {
 	// Data Access Object: 데이터에 접근하는 것을 목적으로 하는 객체 
 
 	//empvo타입만 저장해서 반환하겠다
-	public List<EmpVo> search(String findStr){
+	public List<EmpVo> search(String findStr){  //abc라고 입력했다면 findStr = abc로 루핑
+		
+		//<Interface>= <class>
+		//부모타입의 변수에 자식의 객체를 생성해 저장할 수 있는 형태(다형성)
 		List<EmpVo> list = new ArrayList<EmpVo>();
 
 		try {
@@ -35,7 +38,7 @@ public class EmpDao {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, "%" + findStr + "%");
 			ps.setString(2, "%" + findStr + "%");
-			ps.setString(3, "%" + findStr + "%"); //setstring: 문자열로 반환
+			ps.setString(3, "%" + findStr + "%"); //setstring: 문자열로 반환(문자열에 작은따옴표를 붙혀줌)
 			
 			rs = ps.executeQuery();
 			while(rs.next()) {
