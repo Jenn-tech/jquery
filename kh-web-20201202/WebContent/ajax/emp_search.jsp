@@ -44,7 +44,6 @@
 		//stringbuilder나 buffer는 저장만함
 		
    }
-   
    out.print(sb.toString());
 
 	

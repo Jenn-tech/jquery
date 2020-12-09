@@ -55,7 +55,7 @@ $('#btnFind').on('click', function(){
 		
 		//200 : 정상요청(송신) & 4 : 응답이 정상적으로 왔다(수신)
 		if(req.status==200 && req.readyState==4){
-			let xml = req.responseXML; //xml로 읽어들일경우 text읽어들이면 인식을 못하기때문에 responseText를 responseXML로 바꿔준다 이를 임의의변수 xml로 저장
+			let xml = req.responseXML; //xml로 읽어들일경우 text읽어들이면 인식을 못하기때문에 responseText를 responseXML로 바꿔준다 이를 임의의변수 xml로 저장, 응답정보를 xml로 읽겠다
 			let emps = xml.getElementsByTagName("emp");//emp태그들을 배열로 넘겨받음
 			let result = '';
 
@@ -80,7 +80,7 @@ $('#btnFind').on('click', function(){
 		}
 	}
 
-	//3 전송
+	//3 전송, 요청 실행
 	req.send();
 })
 </script>

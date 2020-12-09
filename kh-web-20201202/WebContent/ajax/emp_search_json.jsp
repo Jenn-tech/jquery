@@ -24,15 +24,7 @@
    List<String> sb = new ArrayList<String>();
    
 	//%s-문자열(string), %d-정수형(digit), %c-문자(char), %f-실수(float)
-   /*
-	String fmt = "<div class='emp'>"
-              + "  <div>사번:%d</div>"
-              + "  <div>성명:%s</div>"
-              + "  <div>이메일:%s</div>"
-              + "  <div>연락처:%s</div>"
-              + "  <div>급여:%10.1f</div>"
-              + "</div>";
-	*/	   
+   
  //[{'id : '%s', 'name' : '%s', 'email' : '%s', 'phone' : '%s', 'salary' : '%f'}, {}]            
 	String fmt = "{"
 			   + " 'id' : '%d', "
@@ -51,15 +43,15 @@
 				vo.getPhone_number(),	//네번째 %s
 				vo.getSalary()	//다섯번째 %10.1f
 				);
-   		str = str.replaceAll("'", "\"");
+   		str = str.replaceAll("'", "\"");//역슬러시해주는 이유 : 모양만 큰따옴표지 큰따옴표의 기능은 없다는 뜻
 		sb.add(str); 
 		//String : 고정문자열(탐색-메모리공간확보-저장의 프로세스라서 속도가 느림)
 		//stringbuilder나 buffer는 저장만함
 		
    }
    
+ //toArray : 저장된 값을 배열로 바꿔라 [{A}, {B}..], toString: 그 값을 문자열로 바꿔라
    out.print(Arrays.toString(sb.toArray()));
-
 	
 	
 

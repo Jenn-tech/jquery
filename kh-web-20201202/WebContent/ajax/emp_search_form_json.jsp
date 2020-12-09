@@ -46,16 +46,25 @@ $('#btnFind').on('click', function(){
 
 	//1 오픈
 	req.open('get', './ajax/emp_search_json.jsp?' + param); //get타입으로 요청, **에게 자료요청 (get타입은 ?문자열형태라 간단함)
+/*
+ * 만약 GET타입이 아닌 POST타입으로 한다면?
+	req.open('post', './ajax/emp_search_json.jsp?' + param);	
+	req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded;charset=utf-8'); --헤더값을 바꿔줘야함
+	req.send(parm); 
 
+	따라서 post타입으로 전송하느니 get타입으로 전송하는 것이 편하고 단순함.
+ */
 	//2 상태값체크
 	req.onreadystatechange=function(){
 		//console.log(req.status + "," + req.readyState);
 		
 		//200 : 정상요청(송신) & 4 : 응답이 정상적으로 왔다(수신)
 		if(req.status==200 && req.readyState==4){
-			let data = JSON.parse(req.responseText);
+			
+			//**중요한부분(JSON.parse는 문자열을 object로 만들어주는명령어.전제조건: 문자열은 JSON구조로 되어있어야함 양옆의 큰따옴표를 빼줌)
+			let data = JSON.parse(req.responseText); 
 			let doc = '';
-			for(var i=0 ; i<data.length ; i++){
+			for(var i=0 ; i<data.length ; i++){ //JSON ==> html
 				doc += "<div class='emp'>"
 					+ "<div>id :" + data[i].id +"</div>"
 					+ "<div>" + data[i].name + "</div>"

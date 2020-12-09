@@ -8,7 +8,7 @@
 <style>
 	#items >div  {
 		display : inline-block;
-		width : 200px;
+		width : 190px;
 		height : 200px;
 		border : 1px solid #ccc;
 		padding : 5px;
