@@ -26,37 +26,27 @@ if(request.getParameter("sub") != null){
 
 %>
 <div id='index'>
-	<header id='header'>
-		<nav id='nav'>
-			<ul>
-				<li><a href='index.jsp'>HOME</a></li>
-				<li><a href='index.jsp?sub=./jquery/menu.jsp'>JQUERY</a></li>
-				<li><a href='index.jsp?sub=./ajax/menu.jsp'>AJAX</a></li>
-				<li><a href='index.jsp?sub=./mybatis/menu.jsp'>MYBATIS</a></li>
-				<li>방명록</li>
-				<li>게시판</li>
-				<li>회원관리</li>
-			</ul>
-		</nav>
-	</header>
-	
+	<%--header영역  --%>
+	<%@include file="header.jsp" %>
 	<section id='contents'>
 		<article class='content'>
 			<jsp:include page="<%=inc %>"/>
 		</article>
 		<aside class='aside'>
-			<img src='http://placehold.it/150X100'/>
+			<jsp:include page="./member/loginfo.jsp"/>
 			<div id='sub_menu'>
 				<jsp:include page="<%=sub %>" />
 			</div>
 		</aside>
 	</section>
-	<footer id='footer'>융합 S/W 개발(주)</footer>
+		<%--footer영역  --%>
+	<%@include file="footer.jsp" %>
+	
 </div>
 <script>
 	//모든 기본태그의 마진, 패딩을 0로 설정
-	$('*').css('margin', '0px');
-	$('*').css('padding', '0px');
+	//$('*').css('margin', '0px');
+	//$('*').css('padding', '0px');
 	//패딩의 증가의 영향을 최소화하기위한 조치
 	$('*').css('box-sizing', 'border-box');
 	$('a').css('text-decoration', 'none'); //링크들의 대쉬 없애기
