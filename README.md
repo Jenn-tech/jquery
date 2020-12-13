@@ -12,6 +12,11 @@
     - [1.3.1. Wrap](#131-wrap)
     - [1.3.2. Append](#132-append)
     - [1.3.3. Prepend](#133-prepend)
+  - [1.4. Each](#14-each)
+    - [1.4.1. div의 length만큼 개수가져오기](#141-div의-length만큼-개수가져오기)
+    - [1.4.2. 첫번째 div의 text를 target의 text에 넣기](#142-첫번째-div의-text를-target의-text에-넣기)
+    - [1.4.3. 첫번째 div의 html을 target으 html에 넣기](#143-첫번째-div의-html을-target으-html에-넣기)
+    - [1.4.4. 4개의 div에 4개의 color를 차례대로 넣어주기](#144-4개의-div에-4개의-color를-차례대로-넣어주기)
 
 # 1. 제이쿼리
 
@@ -26,7 +31,7 @@
 	$('#filter > ol > li:eq(2)').css('color', 'green');
 	$('#filter > ol > li:odd').css('font-weight', 'bolder');
 ```
-[결과보기 FROM Jennblg](https://wogus789789.tistory.com/131)
+[전체코드 및 결과 FROM Jennblog](https://wogus789789.tistory.com/131)
 
 
 ## 1.2. [traverse](kh-web-20201202/WebContent/jquery/traverse.jsp)
@@ -74,7 +79,7 @@ $('#traverse > div').css({
 		$(this).parent().css('background-color', '#ff0');
 	}
 ```  
-[결과보기 FROM Jennblg](https://wogus789789.tistory.com/146?category=859777)
+[전체코드 및 결과 FROM Jennblog](https://wogus789789.tistory.com/146?category=859777)
 
 ## 1.3. [manipulation](kh-web-20201202/WebContent/jquery/manipulation.jsp)
 버튼 세개에 각각 click event 처리
@@ -110,4 +115,51 @@ function abc(button) {
 		}
 ```
 
-[결과보기 FROM Jennblg](https://wogus789789.tistory.com/147)
+[전체코드 및 결과 FROM Jennblog](https://wogus789789.tistory.com/147)
+
+## 1.4. [Each](kh-web-20201202/WebContent/jquery/each.jsp)
+
+### 1.4.1. div의 length만큼 개수가져오기
+- size가 아닌length임을 주의
+- target의 html을 바꿔줌
+```java
+$('#each #btnSize')[0].onclick = function(){
+	var len = $('#each > #source > div').length; //length
+	$('#each > #target').html('div 개수 : ' + len);
+	
+}
+```
+
+### 1.4.2. 첫번째 div의 text를 target의 text에 넣기
+```java
+$('#each #btnText')[0].onclick = function(){
+	//var div = $('#each > #source > div').get(0);
+	//var div = $('#each > #source > div:first');
+	var div = $('#each > #source > div').first();
+	var text = div.text();
+	$('#each #target').text(text);
+}
+```
+
+### 1.4.3. 첫번째 div의 html을 target으 html에 넣기
+- text를 넣으면 text값만 가지만 html을 넣으면 html이 다 간다  
+적용된 font-size, color 등도 다 가져온다는 말
+```java
+$('#each #btnHtml')[0].onclick = function(){
+	let div = $('#each > #source > div:first');
+	let html = $(div).html();
+	$('#each #target').html(html);
+}
+```
+
+### 1.4.4. 4개의 div에 4개의 color를 차례대로 넣어주기
+- bg라는 변수에 color 배열생성해주고 each사용해 순서대로 넣어준다
+```java
+$('#each #btnEach')[0].onclick = function(){
+	let bg = ['#00f', '#44f', '#88f', '#aaf'];
+	$('#each > #source > div').each(function(index){
+		$(this).css('background-color', bg[index]);
+		});
+}
+```
+[전체코드 및 결과 FROM Jennblog](https://wogus789789.tistory.com/148)
