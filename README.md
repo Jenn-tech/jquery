@@ -8,6 +8,10 @@
     - [1.2.2. div1, div2의 넓이와 높이 지정하기](#122-div1-div2의-넓이와-높이-지정하기)
     - [1.2.3. btn1, btn2의 넓이와 높이 지정](#123-btn1-btn2의-넓이와-높이-지정)
     - [1.2.4. btn1, btn2에 이벤트 처리](#124-btn1-btn2에-이벤트-처리)
+  - [1.3. manipulation](#13-manipulation)
+    - [1.3.1. Wrap](#131-wrap)
+    - [1.3.2. Append](#132-append)
+    - [1.3.3. Prepend](#133-prepend)
 
 # 1. 제이쿼리
 
@@ -22,6 +26,8 @@
 	$('#filter > ol > li:eq(2)').css('color', 'green');
 	$('#filter > ol > li:odd').css('font-weight', 'bolder');
 ```
+[결과보기 FROM Jennblg](https://wogus789789.tistory.com/131)
+
 
 ## 1.2. [traverse](kh-web-20201202/WebContent/jquery/traverse.jsp)
 - traverse는 '.'을 찍어서 표현한다.
@@ -67,4 +73,41 @@ $('#traverse > div').css({
 	btn2.onclick = function() {
 		$(this).parent().css('background-color', '#ff0');
 	}
+```  
+[결과보기 FROM Jennblg](https://wogus789789.tistory.com/146?category=859777)
+
+## 1.3. [manipulation](kh-web-20201202/WebContent/jquery/manipulation.jsp)
+버튼 세개에 각각 click event 처리
+### 1.3.1. Wrap 
+```java
+function abc(button) {
+	//console.log(button.value);
+	var wrap = "<lable><input type='checkbox'>확인</lable>";
+	$('#main > #target').wrap(wrap);
+	}
 ```
+- onclick 태그하는 방법
+
+### 1.3.2. Append
+```java
+	var btnAppend = $('#btnAppend')[0];
+	btnAppend.onclick = function() {
+		//console.log($(this).val());
+	var wrap = "<br/><lable><input type='checkbox'>확인</lable>";
+	for(var i=0; i<5; i++){
+	$('#main > #target').append(wrap);
+		}
+	}
+```
+- 제이쿼리 사용
+
+### 1.3.3. Prepend
+```java
+	btnPrepend.onclick = function(){ 
+	//console.log(btnPrepend.value);
+	var wrap = "<lable><input type='checkbox'>확인</lable>";
+	$('#main > #target').prepend(wrap);
+		}
+```
+
+[결과보기 FROM Jennblg](https://wogus789789.tistory.com/147)
