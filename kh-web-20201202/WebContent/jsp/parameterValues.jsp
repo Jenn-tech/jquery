@@ -1,3 +1,4 @@
+<%@page import="java.util.Enumeration"%>
 <%@page import="java.util.Arrays"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -30,6 +31,17 @@
 		out.print("<li>취미 : " + Arrays.toString(hobby));
 		out.print("<li>과목 : " + Arrays.toString(subject));
 		out.print("<li>첨부파일 : " + Arrays.toString(attFile));
+		
+		out.print("<h4>getParameterNames()</h4>");
+		Enumeration<String> en = request.getParameterNames();
+		while(en.hasMoreElements()){
+			String str = en.nextElement(); //다중선택일 시 값이 없을때 객체가 넘어가지않음
+			out.print("<li>" + str);
+		}
+		
+		
+		
+		
 		out.print("<hr/>");
 	}
 	

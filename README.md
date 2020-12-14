@@ -518,5 +518,13 @@ public class MemberDao {
 <br>
 
  - Enumeration collection 사용 (getParameterNames())
+```java
+		out.print("<h4>getParameterNames()</h4>");
+		Enumeration<String> en = request.getParameterNames();
+		while(en.hasMoreElements()){
+			String str = en.nextElement(); //다중선택일 시 값이 없을때 객체가 넘어가지않음
+			out.print("<li>" + str);
+		}
+```
 
 [전체 코드 및 결과보기 From Jennblog](https://wogus789789.tistory.com/149)  
