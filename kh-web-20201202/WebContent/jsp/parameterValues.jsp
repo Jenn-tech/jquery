@@ -1,3 +1,6 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.Set"%>
+<%@page import="java.util.Map"%>
 <%@page import="java.util.Enumeration"%>
 <%@page import="java.util.Arrays"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -39,6 +42,19 @@
 			out.print("<li>" + str);
 		}
 		
+		out.print("<h4>getParameterMap()</h4>");
+		Map<String, String[]> map = null;
+		map = request.getParameterMap(); 
+		
+		Set<String> set = map.keySet(); //Map이 String타입이었끼 때문에 얘도 String타입
+		Iterator<String> it = set.iterator(); //set이 String타입이었기떄문에 얘도 String타입
+		
+		//looping
+		while(it.hasNext()){
+			String key = it.next();
+			String[] values = map.get(key);
+			out.print("<li>" + key + " : " + Arrays.toString(values));
+		}
 		
 		
 		

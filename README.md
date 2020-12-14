@@ -35,6 +35,9 @@
 	- [4.1. MemberDao클래스 생성](#41-memberdao클래스-생성)
 	- [4.2. login.jsp수정](#42-loginjsp수정)
 - [5 request(요청정보) 세부사용법](#5-request요청정보-세부사용법)
+	- [5.1. 파라미터 이름들을 <span style="color:MediumPurple">**Enumeration**</span>으로 받아 화면에 출력하시오](#51-파라미터-이름들을-enumeration으로-받아-화면에-출력하시오)
+	- [5.2. 파라미터의 구조들을 <span style="color:MediumPurple">**Map구조**</span>로 받아 화면에 출력하시오](#52-파라미터의-구조들을-map구조로-받아-화면에-출력하시오)
+	- [(참고) **알아두면 좋을<span style="color:MediumPurple"> COLLECTION**](#참고-알아두면-좋을span-stylecolormediumpurple-collection)
 
 # 1. 제이쿼리
 
@@ -487,7 +490,7 @@ public class MemberDao {
 ```
 <br>
 
-- request.getParameter(): 항목이 1개 요소(text, radio, number, date, color, datetime..)  
+- <span style="color:MediumPurple">**request.getParameter()**</span>: 항목이 1개 요소(text, radio, number, date, color, datetime..)  
 체크된것만 넘어가기때문에 단수(하나만 넘어감, values아님)
 ```java
 		String mid = request.getParameter("mid"); 
@@ -495,7 +498,7 @@ public class MemberDao {
 ```
 <br/>
 
-- request.getParameterValues() : 항목이 2개이상(checkbox, select)   
+- <span style="color:MediumPurple">**request.getParameterValues()**</span> : 항목이 2개이상(checkbox, select)   
 따라서 리턴타입은 배열
 
 ```java
@@ -517,6 +520,7 @@ public class MemberDao {
 ```
 <br>
 
+## 5.1. 파라미터 이름들을 <span style="color:MediumPurple">**Enumeration**</span>으로 받아 화면에 출력하시오
  - Enumeration collection 사용 (getParameterNames())
 ```java
 		out.print("<h4>getParameterNames()</h4>");
@@ -526,5 +530,50 @@ public class MemberDao {
 			out.print("<li>" + str);
 		}
 ```
+<br>
+
+## 5.2. 파라미터의 구조들을 <span style="color:MediumPurple">**Map구조**</span>로 받아 화면에 출력하시오
+- key 값은 중복안되지만 value값은 중복가능(배열구조로 되어있음)
+- key값전체 가져오는 것 keySet, value값만 가져오는 것 values
+  
+|key|value|
+|------|------|
+|mid|"hong"
+|gender|"남"or"여"|
+|hobby|[축구, 농구, 탁구..]
+|subject|[html, css...]
+|attFile|[a.png, b.png...]
+
+<br>
+
+```java
+out.print("<h4>getParameterMap()</h4>");
+		Map<String, String[]> map = null;
+		map = request.getParameterMap(); 
+		
+		Set<String> set = map.keySet(); //Map이 String타입이었끼 때문에 얘도 String타입
+		Iterator<String> it = set.iterator(); //set이 String타입이었기떄문에 얘도 String타입
+		
+		//looping
+		while(it.hasNext()){
+			String key = it.next();
+			String[] values = map.get(key);
+			out.print("<li>" + key + " : " + Arrays.toString(values));
+		}
+```
+
+<br>
+
+## (참고) **알아두면 좋을<span style="color:MediumPurple"> COLLECTION**
+- List 
+  - 순서있음, 중복가능 => 배열구조와 가장 유사
+  - ArrayList, Vector
+- Map<K,V> 
+  - k : 중복불가, v : 중복가능 => Iterator, Map.Entry사용하여 값을 빼낼수있음
+  - HashMap
+- set
+  - 순서없음, 중복불가능 => Iterator라는 클래스사용가능
+  - HashSet
+<br>
 
 [전체 코드 및 결과보기 From Jennblog](https://wogus789789.tistory.com/149)  
