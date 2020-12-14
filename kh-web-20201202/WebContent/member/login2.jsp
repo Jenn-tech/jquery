@@ -1,7 +1,6 @@
 <%@page import="bean.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <jsp:useBean id = "dao" class="bean.MemberDao"/>
 <%
 //	response.setContentType("text/html;charset=UTF-8");
 //	request.setCharacterEncoding("utf-8")한글도 깨질 때
@@ -23,7 +22,7 @@
 	
 	
 	
-	//MemberDao dao = new MemberDao();
+	MemberDao dao = new MemberDao();
 	boolean b = dao.login(mid, pwd); //data있다 : true, 없으면 flase
 	
 	if(b){
