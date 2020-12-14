@@ -34,11 +34,12 @@
 - [4. 로그인화면-DB연동](#4-로그인화면-db연동)
 	- [4.1. MemberDao클래스 생성](#41-memberdao클래스-생성)
 	- [4.2. login.jsp수정](#42-loginjsp수정)
-- [5 request(요청정보) 세부사용법](#5-request요청정보-세부사용법)
-	- [5.1. 파라미터 이름들을 <span style="color:MediumPurple">**Enumeration**</span>으로 받아 화면에 출력하시오](#51-파라미터-이름들을-enumeration으로-받아-화면에-출력하시오)
-	- [5.2. 파라미터의 구조들을 <span style="color:MediumPurple">**Map구조**</span>로 받아 화면에 출력하시오](#52-파라미터의-구조들을-map구조로-받아-화면에-출력하시오)
-	- [5.3. submit후 form태그의 값을 유지하도록 조치하시오](#53-submit후-form태그의-값을-유지하도록-조치하시오)
-	- [(참고) **알아두면 좋을<span style="color:MediumPurple"> COLLECTION**](#참고-알아두면-좋을span-stylecolormediumpurple-collection)
+- [5. JSP](#5-jsp)
+	- [5.1. request(요청정보) 세부사용법](#51-request요청정보-세부사용법)
+		- [5.1.1 파라미터 이름들을 <span style="color:MediumPurple">**Enumeration**</span>으로 받아 화면에 출력하시오](#511-파라미터-이름들을-enumeration으로-받아-화면에-출력하시오)
+		- [5.1.2 파라미터의 구조들을 <span style="color:MediumPurple">**Map구조**</span>로 받아 화면에 출력하시오](#512-파라미터의-구조들을-map구조로-받아-화면에-출력하시오)
+		- [5.1.3. submit후 form태그의 값을 유지하도록 조치하시오](#513-submit후-form태그의-값을-유지하도록-조치하시오)
+		- [(참고) **알아두면 좋을<span style="color:MediumPurple"> COLLECTION**](#참고-알아두면-좋을span-stylecolormediumpurple-collection)
 
 # 1. 제이쿼리
 
@@ -448,7 +449,8 @@ public class MemberDao {
 	<% } %>
 ```
 
-# 5 request(요청정보) 세부사용법
+# 5. JSP
+## 5.1. request(요청정보) 세부사용법
 - text, radio, checkbot, select, 첨부파일, submit 버튼을 만들어준다
 
 ```html
@@ -521,7 +523,7 @@ public class MemberDao {
 ```
 <br>
 
-## 5.1. 파라미터 이름들을 <span style="color:MediumPurple">**Enumeration**</span>으로 받아 화면에 출력하시오
+### 5.1.1 파라미터 이름들을 <span style="color:MediumPurple">**Enumeration**</span>으로 받아 화면에 출력하시오
  - Enumeration collection 사용 (getParameterNames())
 ```java
 		out.print("<h4>getParameterNames()</h4>");
@@ -533,7 +535,7 @@ public class MemberDao {
 ```
 <br>
 
-## 5.2. 파라미터의 구조들을 <span style="color:MediumPurple">**Map구조**</span>로 받아 화면에 출력하시오
+### 5.1.2 파라미터의 구조들을 <span style="color:MediumPurple">**Map구조**</span>로 받아 화면에 출력하시오
 - key 값은 중복안되지만 value값은 중복가능(배열구조로 되어있음)
 - key값전체 가져오는 것 keySet, value값만 가져오는 것 values
   
@@ -565,7 +567,7 @@ out.print("<h4>getParameterMap()</h4>");
 
 <br>
 
-## 5.3. submit후 form태그의 값을 유지하도록 조치하시오
+### 5.1.3. submit후 form태그의 값을 유지하도록 조치하시오
 ```java
 <script>
 	$('#btnRun').on('click', function() {
@@ -579,7 +581,7 @@ out.print("<h4>getParameterMap()</h4>");
 <br>
 
 
-## (참고) **알아두면 좋을<span style="color:MediumPurple"> COLLECTION**
+### (참고) **알아두면 좋을<span style="color:MediumPurple"> COLLECTION**
 - List 
   - 순서있음, 중복가능 => 배열구조와 가장 유사
   - ArrayList, Vector
