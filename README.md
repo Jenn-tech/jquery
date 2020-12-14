@@ -26,6 +26,11 @@
 		- [3.2.3. script](#323-script)
 		- [(참고) 정규식](#참고-정규식)
 	- [3.3. login.js로 이동](#33-loginjs로-이동)
+		- [3.3.1. logInOut이라는 function을 만들어준다](#331-loginout이라는-function을-만들어준다)
+		- [3.3.2. 제이쿼리 방식](#332-제이쿼리-방식)
+		- [3.3.3. javascript 방식](#333-javascript-방식)
+		- [3.3.4. btnLogin이 null값이 아닐 때](#334-btnlogin이-null값이-아닐-때)
+		- [3.3.5. btnLogout이 null값이 아닐 때](#335-btnlogout이-null값이-아닐-때)
 
 # 1. 제이쿼리
 
@@ -238,4 +243,67 @@ if( session.getAttribute("mid")== null){
  pattern='^[A-Z][A-Za-z0-9]{8,20}$' 
 ```
 
-## 3.3. login.js로 이동
+## 3.3. login.js로 이동  
+
+### 3.3.1. logInOut이라는 function을 만들어준다
+```java
+var logInOut = function(){ ..}
+```
+
+### 3.3.2. 제이쿼리 방식
+```java
+	$('#btnLogin').on('click', function(){
+		$('#frm_log').action = "./member/login.jsp";  //id가져옴
+		$('#frm_log').submit();		
+	});
+	
+	$('#btnLogout').on('click', function(){
+		location.href = "./member/logout.jsp";
+		
+	});
+```
+
+### 3.3.3. javascript 방식
+- btnLogin값이 null이아니면 login.jsp로 가는 aciton을 하고 btnLogout값이 null이 아니면 logout.jsp로 이동
+  - 이때 두 버튼이 이동하는 문법이 다른 이유는 btnLogin은 form의 형식을 사용해서 submit하면 action을 취하는 형식을 쓸 수 있지만 btnLogout은 input을 썼기때문에 logout은 action을 취할 수 없다. 따라서 logout을 했을 경우 location을 이동시켜주는 형태로 만들 수 있음
+```java
+	var btnLogin = document.getElementById('btnLogin'); //document에서 element를 가져오는데 아이디를 사용해서 가져와라 object이름은 btnLogin으로 하겠따
+	var btnLogout = document.getElementById('btnLogout');
+	
+	if(btnLogin != null){
+	btnLogin.onclick = function(){
+		var frm = document.frm_log; //name가져옴
+		frm.action = './member/login.jsp';
+		frm.submit();
+	}
+	}
+		
+	if(btnLogout != null){
+	btnLogout.onclick = function(){
+		location.href = './member/logout.jsp';
+	}
+	}
+```
+
+### 3.3.4. btnLogin이 null값이 아닐 때
+- login.jsp로 이동
+  - 이 때 form에 있는값 (id아닌 name값)  
+id값은 server로 넘어가지않음 name에 해당하는 value값이 넘어갑
+- response.sendRedirect는 ("..")를 다시 로딩? 뭐 하라 이런 뜻이니까 속성을 set하거나 remove하고나서 다시 index를 로드하니까 그때 그 값이 null이냐 아니냐에 따라서 로그인되거나 로그아웃됨
+- (참고) database를 쓰지않고 null이 아닐경우 로그인하는 초기방법임
+```java
+	tring mid = request.getParameter("mid");
+	String pwd = request.getParameter("pwd");   
+	
+	session.setAttribute("mid", mid); //1속성명, 2속성값
+	response.sendRedirect("../index.jsp"); 
+	//response 응답정보 , 현재페이지를 ("..")로 redirect하라 index페이지 다시 열림
+	
+```
+
+### 3.3.5. btnLogout이 null값이 아닐 때 
+```java
+	session.removeAttribute("mid");
+	response.sendRedirect("../index.jsp");
+```
+[전체 코드 및 결과보기 From Jennblog](https://wogus789789.tistory.com/144)

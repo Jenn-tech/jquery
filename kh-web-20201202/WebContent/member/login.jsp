@@ -7,24 +7,32 @@
 	
 	//실제 database에 존재유무
 	
-	session.setAttribute("mid", mid); //1속성명, 2속성값
-	response.sendRedirect("../index.jsp"); //response 응답정보 , 현재페이지를 ("..")로 redirect하라 index페이지 다시 열림
-
-	
-	
-	
 	
 	/*
+	null이 아닐경우 로그인하는 초기방법
+	session.setAttribute("mid", mid); //1속성명, 2속성값
+	response.sendRedirect("../index.jsp"); //response 응답정보 , 현재페이지를 ("..")로 redirect하라 index페이지 다시 열림
+	*/
+	
+	
+	
+	
+	
+	
 	MemberDao dao = new MemberDao();
-	boolean b = dao.login(mid, pwd);
+	boolean b = dao.login(mid, pwd); //data있다 : true, 없으면 flase
 	
 	if(b){
+		//로그인 성공
 		session.setAttribute("mid", mid);
 		response.sendRedirect("../index.jsp");
-	}
+	}else{ %>
+		<span>로그인 실패</span><br /> 
+		
+			<%response.sendRedirect("../index.jsp"); %>	
+		
+	<%}
 	
-	session.setAttribute("mid", mid);  //mid라는 속석명에 mid라는 속성값이 들어감
-	//response.sendRedirect("../index.jsp");
 	
-	*/
+	
 %>
