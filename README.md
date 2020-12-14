@@ -31,6 +31,9 @@
 		- [3.3.3. javascript 방식](#333-javascript-방식)
 		- [3.3.4. btnLogin이 null값이 아닐 때](#334-btnlogin이-null값이-아닐-때)
 		- [3.3.5. btnLogout이 null값이 아닐 때](#335-btnlogout이-null값이-아닐-때)
+- [4. 로그인화면-DB연동](#4-로그인화면-db연동)
+	- [4.1. MemberDao클래스 생성](#41-memberdao클래스-생성)
+	- [4.2. login.jsp수정](#42-loginjsp수정)
 
 # 1. 제이쿼리
 
@@ -47,6 +50,8 @@
 ```
 [전체코드 및 결과 FROM Jennblog](https://wogus789789.tistory.com/131)
 
+</br>
+
 
 ## 1.2. [traverse](kh-web-20201202/WebContent/jquery/traverse.jsp)
 - traverse는 '.'을 찍어서 표현한다.
@@ -62,6 +67,9 @@ method=> .children(expr), .find(expr), .parent(expr), .next(expr), .prev(expr)
 	$('#traverse > ul > li').slice(1,4).css('font-family', '궁서체');
 ```
   
+</br>
+
+
 ### 1.2.2. div1, div2의 넓이와 높이 지정하기
 ```java
 $('#traverse > div').css({
@@ -71,6 +79,9 @@ $('#traverse > div').css({
 		});
 ```
 
+</br>
+
+
 ### 1.2.3. btn1, btn2의 넓이와 높이 지정
 ```java
 	$('#traverse > div >.btn1, .btn2').css({
@@ -78,6 +89,9 @@ $('#traverse > div').css({
 		'height': '100px'
 		});
 ```
+
+</br>
+
 
 ### 1.2.4. btn1, btn2에 이벤트 처리
 ```java
@@ -95,9 +109,13 @@ $('#traverse > div').css({
 ```  
 [전체코드 및 결과 FROM Jennblog](https://wogus789789.tistory.com/146?category=859777)
 
+</br>
+
+
 ## 1.3. [manipulation](kh-web-20201202/WebContent/jquery/manipulation.jsp)
 버튼 세개에 각각 click event 처리
 ### 1.3.1. Wrap 
+- onclick 태그하는 방법
 ```java
 function abc(button) {
 	//console.log(button.value);
@@ -105,9 +123,13 @@ function abc(button) {
 	$('#main > #target').wrap(wrap);
 	}
 ```
-- onclick 태그하는 방법
+
+</br>
+
+
 
 ### 1.3.2. Append
+- 제이쿼리 사용
 ```java
 	var btnAppend = $('#btnAppend')[0];
 	btnAppend.onclick = function() {
@@ -118,9 +140,13 @@ function abc(button) {
 		}
 	}
 ```
-- 제이쿼리 사용
+
+</br>
+
+
 
 ### 1.3.3. Prepend
+- javascript 사용
 ```java
 	btnPrepend.onclick = function(){ 
 	//console.log(btnPrepend.value);
@@ -130,6 +156,9 @@ function abc(button) {
 ```
 
 [전체코드 및 결과 FROM Jennblog](https://wogus789789.tistory.com/147)
+
+</br>
+
 
 ## 1.4. [Each](kh-web-20201202/WebContent/jquery/each.jsp)
 
@@ -144,6 +173,9 @@ $('#each #btnSize')[0].onclick = function(){
 }
 ```
 
+</br>
+
+
 ### 1.4.2. 첫번째 div의 text를 target의 text에 넣기
 ```java
 $('#each #btnText')[0].onclick = function(){
@@ -154,6 +186,9 @@ $('#each #btnText')[0].onclick = function(){
 	$('#each #target').text(text);
 }
 ```
+
+</br>
+
 
 ### 1.4.3. 첫번째 div의 html을 target으 html에 넣기
 - text를 넣으면 text값만 가지만 html을 넣으면 html이 다 간다  
@@ -166,6 +201,9 @@ $('#each #btnHtml')[0].onclick = function(){
 }
 ```
 
+</br>
+
+
 ### 1.4.4. 4개의 div에 4개의 color를 차례대로 넣어주기
 - bg라는 변수에 color 배열생성해주고 each사용해 순서대로 넣어준다
 ```java
@@ -177,6 +215,9 @@ $('#each #btnEach')[0].onclick = function(){
 }
 ```
 [전체코드 및 결과 FROM Jennblog](https://wogus789789.tistory.com/148)
+
+</br>
+
 
 # 2. AJAX
 not yet
@@ -212,6 +253,10 @@ if( session.getAttribute("mid")== null){
 	...	
 		<% }  %>
 ```
+
+</br>
+
+
 ### 3.2.1. 로그인 이전 화면
 ```java
 		<form name='frm_log' method='post'>
@@ -224,11 +269,19 @@ if( session.getAttribute("mid")== null){
 
 		<br /> <a href=''>아이디 | 암호찾기</a>
 ```
+
+</br>
+
+
 ### 3.2.2. 로그인 이후 화면
 ```java
 <span>[<%=session.getAttribute("mid")%>]님 안녕하세요</span><br /> 
 		<input type='button' id='btnLogout' value='로그아웃' />
 ```
+
+</br>
+
+
 ### 3.2.3. script
 - 이를 통해 login.js의 logInOut이라는 function을 사용할 것을 알 수 있음
 ```java
@@ -236,6 +289,10 @@ if( session.getAttribute("mid")== null){
 <script>logInOut()</script> //body아래
 
 ```
+
+</br>
+
+
 
 ### (참고) 정규식
 ```java
@@ -250,6 +307,10 @@ if( session.getAttribute("mid")== null){
 var logInOut = function(){ ..}
 ```
 
+</br>
+
+
+
 ### 3.3.2. 제이쿼리 방식
 ```java
 	$('#btnLogin').on('click', function(){
@@ -262,6 +323,10 @@ var logInOut = function(){ ..}
 		
 	});
 ```
+
+
+</br>
+
 
 ### 3.3.3. javascript 방식
 - btnLogin값이 null이아니면 login.jsp로 가는 aciton을 하고 btnLogout값이 null이 아니면 logout.jsp로 이동
@@ -285,6 +350,10 @@ var logInOut = function(){ ..}
 	}
 ```
 
+
+</br>
+
+
 ### 3.3.4. btnLogin이 null값이 아닐 때
 - login.jsp로 이동
   - 이 때 form에 있는값 (id아닌 name값)  
@@ -301,9 +370,70 @@ id값은 server로 넘어가지않음 name에 해당하는 value값이 넘어갑
 	
 ```
 
-### 3.3.5. btnLogout이 null값이 아닐 때 
+
+</br>
+
+
+### 3.3.5. btnLogout이 null값이 아닐 때  
 ```java
 	session.removeAttribute("mid");
 	response.sendRedirect("../index.jsp");
 ```
-[전체 코드 및 결과보기 From Jennblog](https://wogus789789.tistory.com/144)
+[전체 코드 및 결과보기 From Jennblog](https://wogus789789.tistory.com/144)  
+
+</br>
+
+
+# 4. 로그인화면-DB연동
+## 4.1. MemberDao클래스 생성
+- [application](kh-web-20201202/src/bean/Application.java)객체 생성하여 연결해준다
+- sql문장 실행하여 mid가 1개일시 true를 return, 기본값은 false(로그인안된 상황)
+```java
+public class MemberDao {
+	Connection conn; //database의 연결정보
+	PreparedStatement ps; //문자열로 되어있는 sql문장을 sql실행문장으로 만들어주는statement
+	ResultSet rs; //select문의 실행결과
+	
+	public MemberDao() {
+		conn = new Application().getConn();
+	
+	}
+	
+	public boolean login(String mid, String pwd) {
+		boolean b = false; //기본 : 로그인되지 않았어
+		try {
+			String sql = "select count(mid) cnt from members where mid=? and pwd=? ";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, mid); //index는 1부터 시작
+			ps.setString(2, pwd);
+			
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				int cnt = rs.getInt("cnt");
+				if (cnt >= 1) { //정확히는 1
+					b = true;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			return b;
+		}
+	}
+}
+```
+
+## 4.2. login.jsp수정
+- MemberDao객체 생성
+```java
+	MemberDao dao = new MemberDao();
+	boolean b = dao.login(mid, pwd); //data있다 : true, 없으면 flase
+	
+	if(b){
+		//로그인 성공
+		session.setAttribute("mid", mid);
+		response.sendRedirect("../index.jsp");
+	}else{
+		//로그인 실패	
+	}
+```

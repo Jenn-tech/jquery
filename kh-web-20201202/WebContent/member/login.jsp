@@ -26,12 +26,10 @@
 		//로그인 성공
 		session.setAttribute("mid", mid);
 		response.sendRedirect("../index.jsp");
-	}else{ %>
-		<span>로그인 실패</span><br /> 
+	}else{
+		//로그인 실패
 		
-			<%response.sendRedirect("../index.jsp"); %>	
-		
-	<%}
+	}
 	
 	
 	
