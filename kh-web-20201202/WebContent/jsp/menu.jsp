@@ -8,7 +8,9 @@
 </head>
 <body>
 <h3>JSP</h3>
-   <ol>
-<li><a href='index.jsp?sub=./jsp/menu.jsp&inc=./jsp/implict.jsp'>내장객체</a></li>   </ol>
+	<ol>
+		<li><a href='index.jsp?sub=./jsp/menu.jsp&inc=./jsp/implict.jsp'>내장객체</a></li>   
+		<li><a href='index.jsp?sub=./jsp/menu.jsp&inc=./jsp/parameterValues.jsp'>parameter</a></li>   
+	</ol>
 </body>
 </html>

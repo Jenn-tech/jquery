@@ -37,6 +37,7 @@
 - [5 request(요청정보) 세부사용법](#5-request요청정보-세부사용법)
 	- [5.1. 파라미터 이름들을 <span style="color:MediumPurple">**Enumeration**</span>으로 받아 화면에 출력하시오](#51-파라미터-이름들을-enumeration으로-받아-화면에-출력하시오)
 	- [5.2. 파라미터의 구조들을 <span style="color:MediumPurple">**Map구조**</span>로 받아 화면에 출력하시오](#52-파라미터의-구조들을-map구조로-받아-화면에-출력하시오)
+	- [5.3. submit후 form태그의 값을 유지하도록 조치하시오](#53-submit후-form태그의-값을-유지하도록-조치하시오)
 	- [(참고) **알아두면 좋을<span style="color:MediumPurple"> COLLECTION**](#참고-알아두면-좋을span-stylecolormediumpurple-collection)
 
 # 1. 제이쿼리
@@ -483,7 +484,7 @@ public class MemberDao {
 		<label>첨부파일</label>
 		<input type = 'file' name = 'attFile' multiple />
 		<p/>
-		<input type = 'submit' value = '실행' />
+		<input type = 'button' value = '실행' id = 'btnRun'/>
 	</form>
 
 </div>
@@ -563,6 +564,20 @@ out.print("<h4>getParameterMap()</h4>");
 ```
 
 <br>
+
+## 5.3. submit후 form태그의 값을 유지하도록 조치하시오
+```java
+<script>
+	$('#btnRun').on('click', function() {
+		var param = $('#frm_param').serialize();
+		$('#result').load('./jsp/parameterValuesCtrl.jsp', param);
+		})
+
+</script>
+```
+
+<br>
+
 
 ## (참고) **알아두면 좋을<span style="color:MediumPurple"> COLLECTION**
 - List 
