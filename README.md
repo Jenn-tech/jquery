@@ -34,6 +34,7 @@
 - [4. 로그인화면-DB연동](#4-로그인화면-db연동)
 	- [4.1. MemberDao클래스 생성](#41-memberdao클래스-생성)
 	- [4.2. login.jsp수정](#42-loginjsp수정)
+- [5 request(요청정보) 세부사용법](#5-request요청정보-세부사용법)
 
 # 1. 제이쿼리
 
@@ -425,7 +426,7 @@ public class MemberDao {
 
 ## 4.2. login.jsp수정
 - MemberDao객체 생성
-```java
+```jsp
 	MemberDao dao = new MemberDao();
 	boolean b = dao.login(mid, pwd); //data있다 : true, 없으면 flase
 	
@@ -434,6 +435,88 @@ public class MemberDao {
 		session.setAttribute("mid", mid);
 		response.sendRedirect("../index.jsp");
 	}else{
-		//로그인 실패	
+		//로그인 실패
+	%>
+	<script>
+		alert('fail');
+		location.href='../index.jsp';
+	</script>
+	<% } %>
+```
+
+# 5 request(요청정보) 세부사용법
+- text, radio, checkbot, select, 첨부파일, submit 버튼을 만들어준다
+
+```html
+<div id ='parameter'>
+	<h3>parameter values</h3>
+	
+	<form name='frm_param' method='post' >
+		<label for = 'mid'>아이디</label>
+		<input type='text' id = 'mid' name = 'mid' value = '박씨~	' />
+		<br/>
+		<label>성별</label>
+		<label><input type='radio' name = 'gender' value = 'M'>남성</label>
+		<label><input type='radio' name = 'gender' value = 'F'>여성</label>
+		<br/>
+		<label>취미</label>
+		<label><input type = 'checkbox' value = '축구' name = 'hobby'/>축구</label>
+		<label><input type = 'checkbox' value = '야구' name = 'hobby'/>야구</label>
+		<label><input type = 'checkbox' value = '농구' name = 'hobby'/>농구</label>
+		<label><input type = 'checkbox' value = '탁구' name = 'hobby'/>탁구</label>
+		<label><input type = 'checkbox' value = '배구' name = 'hobby'/>배구</label>
+		<br/>
+		<label>선택과목</label>
+		<select name= 'subject' size = '5' multiple>
+			<option value = 'html5'>HTML5</option>
+			<option value = 'css'>css</option>
+			<option value = 'javascript'>javascript</option>
+			<option value = 'java'>java</option>
+			<option value = 'jsp'>jsp</option>
+			<option value = 'ajax'>ajax</option>
+			<option value = 'jquery'>jquery</option>
+		</select>
+		<br/>
+		<label>첨부파일</label>
+		<input type = 'file' name = 'attFile' multiple />
+		<p/>
+		<input type = 'submit' value = '실행' />
+	</form>
+
+</div>
+```
+<br>
+
+- request.getParameter(): 항목이 1개 요소(text, radio, number, date, color, datetime..)  
+체크된것만 넘어가기때문에 단수(하나만 넘어감, values아님)
+```java
+		String mid = request.getParameter("mid"); 
+		String gender = request.getParameter("gender"); 
+```
+<br/>
+
+- request.getParameterValues() : 항목이 2개이상(checkbox, select)   
+따라서 리턴타입은 배열
+
+```java
+  		String[] hobby = request.getParameterValues("hobby"); 
+		String[] subject = request.getParameterValues("subject"); 
+		String[] attFile = request.getParameterValues("attFile"); 
+```
+<br>
+
+- 화면에 값 출력
+  - 이 때 values들은 배열이기때문에 Arrays를 활용해 tostring을 활용해준다
+```java
+		out.print("<li>아이디 : " + mid);
+		out.print("<li>성별 : " + gender);
+		out.print("<li>취미 : " + Arrays.toString(hobby));
+		out.print("<li>과목 : " + Arrays.toString(subject));
+		out.print("<li>첨부파일 : " + Arrays.toString(attFile));
 	}
 ```
+<br>
+
+ - Enumeration collection 사용 (getParameterNames())
+
+[전체 코드 및 결과보기 From Jennblog](https://wogus789789.tistory.com/149)  

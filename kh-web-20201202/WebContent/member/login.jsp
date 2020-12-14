@@ -2,6 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+//	response.setContentType("text/html;charset=UTF-8");
+//	request.setCharacterEncoding("utf-8")한글도 깨질 때
+
 	String mid = request.getParameter("mid");	//form에 있는값 (id아닌 name값),
 	String pwd = request.getParameter("pwd");   //id값은 server로 넘어가지않음 name에 해당하는 value값이 넘어갑
 	
@@ -28,9 +31,12 @@
 		response.sendRedirect("../index.jsp");
 	}else{
 		//로그인 실패
-		
-	}
+	%>
+	<script>
+		alert('fail');
+		location.href='../index.jsp';
+	</script>
+	<% } %>
 	
 	
 	
-%>
