@@ -24,7 +24,8 @@
 		- [3.2.1. 로그인 이전 화면](#321-로그인-이전-화면)
 		- [3.2.2. 로그인 이후 화면](#322-로그인-이후-화면)
 		- [3.2.3. script](#323-script)
-		- [3.2.4. (참고) 정규식](#324-참고-정규식)
+		- [(참고) 정규식](#참고-정규식)
+	- [3.3. login.js로 이동](#33-loginjs로-이동)
 
 # 1. 제이쿼리
 
@@ -224,14 +225,17 @@ if( session.getAttribute("mid")== null){
 		<input type='button' id='btnLogout' value='로그아웃' />
 ```
 ### 3.2.3. script
+- 이를 통해 login.js의 logInOut이라는 function을 사용할 것을 알 수 있음
 ```java
 <script src='./js/login.js'></script> //title아래
 <script>logInOut()</script> //body아래
 
 ```
 
-### 3.2.4. (참고) 정규식
+### (참고) 정규식
 ```java
 <!-- 첫글자는 대문자고 나머지는 영소문자 다 가능 하며 8자 이상 20미만-->
  pattern='^[A-Z][A-Za-z0-9]{8,20}$' 
 ```
+
+## 3.3. login.js로 이동
