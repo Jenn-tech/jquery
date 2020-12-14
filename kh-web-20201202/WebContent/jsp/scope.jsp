@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>scope</title>
 </head>
 <body>
 <div id = 'scope'>
@@ -19,11 +19,10 @@
 		//session영역의 유지 시간 설정(5초)
 		//session.setMaxInactiveInterval(5);
 	%>
-	<a href = 'scope_check.jsp'>scope message check</a>
-	<form method = 'post' action = 'scope_check.jsp'>
+	<a href = 'scope_check_relay.jsp'>scope message check</a>  <!-- check를 위해 scopte_check_relay.jsp를 연결시켜줌 -->
+	<form method = 'post' action = 'scope_check_relay.jsp'>
 		<input type = 'submit'/>
-		
-		
+
 	</form>
 </div>
 </body>
