@@ -18,23 +18,9 @@
 		- [1.4.3. 첫번째 div의 html을 target으 html에 넣기](#143-첫번째-div의-html을-target으-html에-넣기)
 		- [1.4.4. 4개의 div에 4개의 color를 차례대로 넣어주기](#144-4개의-div에-4개의-color를-차례대로-넣어주기)
 - [2. AJAX](#2-ajax)
-- [3. login, logout화면 초기구현](#3-login-logout화면-초기구현)
-	- [3.1. 동적include](#31-동적include)
-	- [3.2. loninfo.jsp로 이동](#32-loninfojsp로-이동)
-		- [3.2.1. 로그인 이전 화면](#321-로그인-이전-화면)
-		- [3.2.2. 로그인 이후 화면](#322-로그인-이후-화면)
-		- [3.2.3. script](#323-script)
-		- [(참고) 정규식](#참고-정규식)
-	- [3.3. login.js로 이동](#33-loginjs로-이동)
-		- [3.3.1. logInOut이라는 function을 만들어준다](#331-loginout이라는-function을-만들어준다)
-		- [3.3.2. 제이쿼리 방식](#332-제이쿼리-방식)
-		- [3.3.3. javascript 방식](#333-javascript-방식)
-		- [3.3.4. btnLogin이 null값이 아닐 때](#334-btnlogin이-null값이-아닐-때)
-		- [3.3.5. btnLogout이 null값이 아닐 때](#335-btnlogout이-null값이-아닐-때)
-- [4. 로그인화면-DB연동](#4-로그인화면-db연동)
-- [20/12/15](#201215)
-	- [1. jsp표현식과 el표현식, jstl](#1-jsp표현식과-el표현식-jstl)
-	- [2. 방명록(Select)](#2-방명록select)
+- [3.login, logout화면 초기구현](#3login-logout화면-초기구현)
+- [20.12.14 로그인화면-DB연동](#201214-로그인화면-db연동)
+- [20.12.15 el, jstl & 방명록(select)](#201215-el-jstl--방명록select)
 
 # 1. 제이쿼리
 
@@ -222,181 +208,59 @@ $('#each #btnEach')[0].onclick = function(){
 
 # 2. AJAX
 not yet
-# 3. login, logout화면 초기구현
-## 3.1. 동적include
-- index.jsp안에 aside태그를 하나 만들어줘서 로그인 영역을 생성
-- 이 안에 동적include를 하여 loginfo.jsp를 불러온다
-  - 동적include특징  
-    1. 실행결과가 포함된다. 진행하다 동적include만나면 스탑하고 처리하고 다시 실행
-	2. page속성, 문자역 또는 변수사용 가능 (정적 include와는 반대성향)
-- 따라서 index가 쭉 실행되다가 동적include를 만나면 stop하고 이것을 실행하고 완료가 되면 다시 밑으로 진행한다
-```java
-<aside class='aside'>
-	<jsp:include page="./member/loginfo.jsp"/>
-```
-
-## 3.2. loninfo.jsp로 이동
-- if문을 사용하여 session안의 mid속성을 가져온다
-  - session의  mid의 attribute값을 가져옴. 
-aplication이 모두 생김 그 안에는 session이 있고 session안에는 request가 있음
-request안에는 page가 있음  
-크기 : a>s>r>p
-- 이 때 그 값이 null이면 로그인 이전화면을 보여주고 아니면 로그인 이후 화면을 보여준다
-```java
-<% 
-if( session.getAttribute("mid")== null){ 
-%>
-		<%--로그인 이전 화면 --%>
-	...
-		<% } else {%>
-
-		<%--로그인 이후 화면 --%>
-	...	
-		<% }  %>
-```
-
-</br>
+# 3.[login, logout화면 초기구현](INDEX/201213.md)
+- login, logout화면 초기구현
+  - 1.1 동적include
+  - 1.2. loninfo.jsp로 이동
+    - 1.2.1. 로그인 이전 화면
+    - 1.2.2. 로그인 이후 화면
+    - 1.2.3. script
+    - (참고) 정규식
+  - 1.3. login.js로 이동
+    - 1.3..1. logInOut이라는 function을 만들어준다
+    - 1.3.2. 제이쿼리 방식
+    - 1.3.3. javascript 방식
+    - 1.3.4. btnLogin이 null값이 아닐 때
+    - 1.3.5. btnLogout이 null값이 아닐 때
 
 
-### 3.2.1. 로그인 이전 화면
-```java
-		<form name='frm_log' method='post'>
-			<label for='mid'>아이디</label><br />
-			<input type='text' id='mid' name='mid' size='18' value='kim' /> <br />
-			<label for='pwd'>암호</label><br /> <input type='password' id='pwd'
-				name='pwd' size='18' value='1111' /> <br /> <input type='button'
-				id='btnLogin' value='로그인' />
-		</form>
+# 20.12.14 [로그인화면-DB연동](INDEX/201214.md)
+- 1. 로그인화면 구현
+  - 1.1. MemberDao클래스 생성
+  - 1.2. login.jsp수정
+<br>
 
-		<br /> <a href=''>아이디 | 암호찾기</a>
-```
+- 2. JSP
+  - 2.1. request(요청정보) 세부사용법
+    - 2.1.1 파라미터 이름들을 Enumeration으로 받아 화면에 출력하시오
+    - 2.1.2 파라미터의 구조들을 Map구조로 받아 화면에 출력하시오
+    - 2.1.3. submit후 form태그의 값을 유지하도록 조치하시오
+    - (참고) 알아두면 좋을 COLLECTION
+<br>
 
-</br>
-
-
-### 3.2.2. 로그인 이후 화면
-```java
-<span>[<%=session.getAttribute("mid")%>]님 안녕하세요</span><br /> 
-		<input type='button' id='btnLogout' value='로그아웃' />
-```
-
-</br>
-
-
-### 3.2.3. script
-- 이를 통해 login.js의 logInOut이라는 function을 사용할 것을 알 수 있음
-```java
-<script src='./js/login.js'></script> //title아래
-<script>logInOut()</script> //body아래
-
-```
-
-</br>
-
-
-
-### (참고) 정규식
-```java
-<!-- 첫글자는 대문자고 나머지는 영소문자 다 가능 하며 8자 이상 20미만-->
- pattern='^[A-Z][A-Za-z0-9]{8,20}$' 
-```
-
-## 3.3. login.js로 이동  
-
-### 3.3.1. logInOut이라는 function을 만들어준다
-```java
-var logInOut = function(){ ..}
-```
-
-</br>
-
-
-
-### 3.3.2. 제이쿼리 방식
-```java
-	$('#btnLogin').on('click', function(){
-		$('#frm_log').action = "./member/login.jsp";  //id가져옴
-		$('#frm_log').submit();		
-	});
-	
-	$('#btnLogout').on('click', function(){
-		location.href = "./member/logout.jsp";
-		
-	});
-```
-
-
-</br>
-
-
-### 3.3.3. javascript 방식
-- btnLogin값이 null이아니면 login.jsp로 가는 aciton을 하고 btnLogout값이 null이 아니면 logout.jsp로 이동
-  - 이때 두 버튼이 이동하는 문법이 다른 이유는 btnLogin은 form의 형식을 사용해서 submit하면 action을 취하는 형식을 쓸 수 있지만 btnLogout은 input을 썼기때문에 logout은 action을 취할 수 없다. 따라서 logout을 했을 경우 location을 이동시켜주는 형태로 만들 수 있음
-```java
-	var btnLogin = document.getElementById('btnLogin'); //document에서 element를 가져오는데 아이디를 사용해서 가져와라 object이름은 btnLogin으로 하겠따
-	var btnLogout = document.getElementById('btnLogout');
-	
-	if(btnLogin != null){
-	btnLogin.onclick = function(){
-		var frm = document.frm_log; //name가져옴
-		frm.action = './member/login.jsp';
-		frm.submit();
-	}
-	}
-		
-	if(btnLogout != null){
-	btnLogout.onclick = function(){
-		location.href = './member/logout.jsp';
-	}
-	}
-```
-
-
-</br>
-
-
-### 3.3.4. btnLogin이 null값이 아닐 때
-- login.jsp로 이동
-  - 이 때 form에 있는값 (id아닌 name값)  
-id값은 server로 넘어가지않음 name에 해당하는 value값이 넘어갑
-- response.sendRedirect는 ("..")를 다시 로딩? 뭐 하라 이런 뜻이니까 속성을 set하거나 remove하고나서 다시 index를 로드하니까 그때 그 값이 null이냐 아니냐에 따라서 로그인되거나 로그아웃됨
-- (참고) database를 쓰지않고 null이 아닐경우 로그인하는 초기방법임
-```java
-	tring mid = request.getParameter("mid");
-	String pwd = request.getParameter("pwd");   
-	
-	session.setAttribute("mid", mid); //1속성명, 2속성값
-	response.sendRedirect("../index.jsp"); 
-	//response 응답정보 , 현재페이지를 ("..")로 redirect하라 index페이지 다시 열림
-	
-```
-
-
-</br>
-
-
-### 3.3.5. btnLogout이 null값이 아닐 때  
-```java
-	session.removeAttribute("mid");
-	response.sendRedirect("../index.jsp");
-```
-[전체 코드 및 결과보기 From Jennblog](https://wogus789789.tistory.com/144)  
-
-</br>
-
-
-# 4. 로그인화면-DB연동
-  - [1. 로그인화면 구현](#1-로그인화면-구현)
-  - [1.1. MemberDao클래스 생성](#11-memberdao클래스-생성)
-  - [1.2. login.jsp수정](#12-loginjsp수정)
-- [2. JSP](#2-jsp)
-  - [2.1. request(요청정보) 세부사용법](#21-request요청정보-세부사용법)
-    - [2.1.1 파라미터 이름들을 <span style="color:MediumPurple">**Enumeration**</span>으로 받아 화면에 출력하시오](#211-파라미터-이름들을-enumeration으로-받아-화면에-출력하시오)
-    - [2.1.2 파라미터의 구조들을 <span style="color:MediumPurple">**Map구조**</span>로 받아 화면에 출력하시오](#212-파라미터의-구조들을-map구조로-받아-화면에-출력하시오)
-    - [2.1.3. submit후 form태그의 값을 유지하도록 조치하시오](#213-submit후-form태그의-값을-유지하도록-조치하시오)
-    - [(참고) **알아두면 좋을<span style="color:MediumPurple"> COLLECTION**](#참고-알아두면-좋을span-stylecolormediumpurple-collection)
-
-# [20/12/15](INDEX/guestbook.md)
-## 1. jsp표현식과 el표현식, jstl
-## 2. 방명록(Select)
+# 20.12.15 [el, jstl & 방명록(select)](INDEX/guestbook.md)
+- 1. el표현식과 jstl
+	- 1.1 jsp표현식과 el표현식
+		- 1.1.1 jsp표현식
+		- 1.1.2. jsp 스크립틀릿
+		- 1.1.3 el표현식
+			- 1.1.3.1. el에서 보관소 검색범위
+			- 1.1.3.2. el연산식
+  - 1.2. jstl(Java Standard Tag Library)
+	- 1.2.1. c:out ==> jstl을 사용한 출력문
+	- 1.2.2. c:set | c:remove | c:out
+	- 1.2.3. c:if
+	- 1.2.4. c:choose | c:when | c:otherwise
+	- 1.2.5. c:forTokens
+	- 1.2.6. c:forEach
+- 2. 방명록 (select)
+	- 2.1. GuestBookVo
+	- 2.2. GuestBookDao
+		- 2.2.1. connection, preparedstatement, resultset객체 생성
+		- 2.2.2. select 메소드
+		- 2.2.3.select를 위한 sql문장 생성
+		- 2.2.4. looping
+	- 2.3. select.jsp
+		- 2.3.1. 검색바
+		- 2.3.2. 방명록list
 
