@@ -619,8 +619,9 @@ out.print("<h4>getParameterMap()</h4>");
 ```java
 ${hello}
 ```
+- [el연산식](kh-web-20201202/WebContent/jsp/el_ctrl_test.jsp)
 
-## 1.2. jstl(Java Standard Tag Library)
+## 1.2. [jstl(Java Standard Tag Library)](kh-web-20201202/WebContent/jsp/jstl_test.jsp)
 
 - [톰캣사이트](https://tomcat.apache.org/download-taglibs.cgi) 에서 4개의 태그라이브러리 복사
 - <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"  %>
