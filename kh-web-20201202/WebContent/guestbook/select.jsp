@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <title>select</title>
 <link rel = 'stylesheet' type = 'text/css' href ='./css/guestbook.css'>
-<script scr = './js/guestbook.js'></script>
+<script src = './js/guestbook.js'></script>
 </head>
 <body>
 <jsp:useBean id="dao" class="gbook.GuestbookDao"/>
@@ -55,6 +55,24 @@
 			</div>
 		</c:forEach>
 	</div>
+	
+	<% for(GuestBookVo vo : list) { %>
+			<div id = 'item'>
+			<label>작성자</label>
+			<output class ='mid'><%=vo.getMid() %> </output>
+			<label>작성일자</label>
+			<output class ='mdate'><%=vo.getMdate() %></output>
+			<br>
+			<textarea rows ="5" cols='80' disabled><%=vo.getMdate() %></textarea>
+			<br>
+			<div class='btns'>
+				<input type = 'button' value = '수정' id = 'btnUpdate'/>
+				<input type = 'button' value = '삭제' id = 'btnDelete'/>
+			</div>
+		</div>
+		<% }%>
+	
+	
 </div>
 </body>
 </html>
