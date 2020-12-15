@@ -238,7 +238,7 @@ not yet
     - (참고) 알아두면 좋을 COLLECTION
 <br>
 
-# 20.12.15 [el, jstl & 방명록(select)](INDEX/guestbook.md)
+# 20.12.15 [el, jstl & 방명록(select)](INDEX/201215.md)
 - 1. el표현식과 jstl
 	- 1.1 jsp표현식과 el표현식
 		- 1.1.1 jsp표현식
