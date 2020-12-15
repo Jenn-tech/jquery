@@ -12,6 +12,8 @@
 </head>
 <body>
 <%
+	request.setCharacterEncoding("UTF-8"); //한글깨지는것 막기
+
 //inc
 String inc = "intro.jsp";
 if(request.getParameter("inc") != null){
