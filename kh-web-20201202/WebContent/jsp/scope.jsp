@@ -16,6 +16,7 @@
 		request.setAttribute("msg", msg);
 		pageContext.setAttribute("msg", msg);
 		
+		
 		//session영역의 유지 시간 설정(5초)
 		//session.setMaxInactiveInterval(5);
 	%>

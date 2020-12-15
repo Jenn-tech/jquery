@@ -1,8 +1,15 @@
 <%@page import="bean.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
     <jsp:useBean id = "dao" class="bean.MemberDao"/>
+    <jsp:useBean id = "vo" class="bean.MemberVo"/>
+
+    <%-- vo객체가 가지고 있는 모든 setter를 사용하여 값을 대입 --%>
+    <jsp:setProperty property="*" name = "vo"/>
+    
 <%
+
 //	response.setContentType("text/html;charset=UTF-8");
 //	request.setCharacterEncoding("utf-8")한글도 깨질 때
 
@@ -24,11 +31,12 @@
 	
 	
 	//MemberDao dao = new MemberDao();
-	boolean b = dao.login(mid, pwd); //data있다 : true, 없으면 flase
+	//boolean b = dao.login(mid, pwd); //data있다 : true, 없으면 flase
+	boolean b = dao.login(vo.getMid(), vo.getPwd());
 	
 	if(b){
 		//로그인 성공
-		session.setAttribute("mid", mid);
+		session.setAttribute("mid", vo.getMid());
 		response.sendRedirect("../index.jsp");
 	}else{
 		//로그인 실패
