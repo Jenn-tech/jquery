@@ -74,7 +74,7 @@ not yet
 	- 1.2.4. c:choose | c:when | c:otherwise
 	- 1.2.5. c:forTokens
 	- 1.2.6. c:forEach
-- 2. 방명록 (select)
+- 2.방명록 (select)
 	- 2.1. GuestBookVo
 	- 2.2. GuestBookDao
 		- 2.2.1. connection, preparedstatement, resultset객체 생성
@@ -97,7 +97,7 @@ not yet
 			- 1.4.3. msg변수 설정해주고 request에 msg를 설정
 			- 1.4.4. script](#144-script)
 	- 1.3. Dao클래스의 insert메소드](#13-dao클래스의-insert메소드)
-- 2. 방명록 Update](#2-방명록-update)
+- 2.방명록 Update](#2-방명록-update)
 	- 2.1. Select.jsp](#21-selectjsp)
 	- 2.2 guestbook.js에서 funcUpdate function 추가
 	- 2.3. update_result.jsp](#23-update_resultjsp)
@@ -106,7 +106,7 @@ not yet
 		- 2.3.3. dao클래스의 update메소드에 vo삽입
 		- 2.3.4. script 부분](#234-script-부분)
 	- 2.4. GuestBookDao에서 update 메소드 추가
-- 3. 방명록 Delete
+- 3.방명록 Delete
 	- 3.1. select.jsp에서 수정및 추가
 	- 3.2. guestbook.js에서 funcDelete function 추가
 	- 3.3. delete_result.jsp
