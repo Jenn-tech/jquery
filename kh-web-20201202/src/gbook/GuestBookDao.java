@@ -37,11 +37,7 @@ public class GuestBookDao {
 				
 				list.add(gbook);
 			}
-			
-			
-			
-			
-			
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}finally {
@@ -83,13 +79,59 @@ public class GuestBookDao {
 		}
 	}
 	
-//	
-//	update() {
-//		
-//	}
-//	
-//	delete() {
-//		
-//	}
-//	
+	
+	public String update(GuestBookVo vo) {
+		String msg = "방명록 내용을 수정하였습니다.";
+		
+		try {
+			String sql = "update guestbook set doc=? where serial=? and pwd=?";
+			
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, vo.getDoc());
+			ps.setInt(2, vo.getSerial());
+			ps.setString(3, vo.getPwd());
+			
+			int rowCnt = ps.executeUpdate();
+			if(rowCnt < 1) {
+				msg = "방명록 수정 중 오류발생";
+			}
+			
+		} catch (Exception ex) {
+			msg = ex.getMessage();
+		}finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return msg;
+		}
+	}
+	
+	public String delete(GuestBookVo vo) {
+		String msg = "방명록이 삭제되었습니다.";
+		try {
+			String sql = "delete from guestbook where serial=? and pwd=?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, vo.getSerial());
+			ps.setString(2, vo.getPwd());
+			
+			int rowCnt = ps.executeUpdate();
+			if(rowCnt<1) {
+				msg = "방명록 삭제 중 오류발생";
+			}
+			
+		} catch (Exception ex) {
+			msg = ex.getMessage();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return msg;
+		}
+	}
+	
+	
 }

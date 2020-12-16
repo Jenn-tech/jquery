@@ -9,7 +9,7 @@
 
 <% 
 
-	String msg = dao.insert(vo);
+	String msg = dao.insert(vo); //기본hint
 	request.setAttribute("msg", msg);
 	
 
