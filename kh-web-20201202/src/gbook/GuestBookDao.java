@@ -3,17 +3,18 @@ package gbook;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import bean.Application;
 
-public class GuestbookDao {
+public class GuestBookDao {
 	Connection conn;
 	PreparedStatement ps;
 	ResultSet rs;
 	
-	public GuestbookDao() {
+	public GuestBookDao() {
 		conn = new Application().getConn();
 	}
 	
@@ -52,12 +53,38 @@ public class GuestbookDao {
 		return list;
 		}
 	}
+
+	public String insert(GuestBookVo vo) {
+		String msg = "방명록이 작성되었습니다.";
+		try {
+			String sql = " insert into guestbook(serial, mid, pwd, doc, mdate) "
+					   + " values(seq_guestbook.nextval, ?, ?, ?, sysdate )";
+			
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, vo.getMid());
+			ps.setString(2, vo.getPwd());
+			ps.setString(3, vo.getDoc());
+
+			int rowCnt = ps.executeUpdate(); //insert된 행수
+			if(rowCnt<1) {
+				msg = "방명록 입력중 오류발생"	;
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			msg = ex.getMessage();
+		}finally {
+			
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return msg;
+		}
+	}
+	
 //	
 //	update() {
-//		
-//	}
-//	
-//	insert() {
 //		
 //	}
 //	

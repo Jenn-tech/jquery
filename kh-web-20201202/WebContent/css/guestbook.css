@@ -31,7 +31,7 @@
 	text-align : right;
 }
 
-#guestbook > #list .btns>input[type=button]{
+#guestbook .btns>input[type=button]{
 	font-size : 9pt;
 	color : #555;
 	border-radius : 15px;
