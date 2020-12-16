@@ -21,7 +21,7 @@
 - [3.login, logout화면 초기구현](#3login-logout화면-초기구현)
 - [20.12.14 로그인화면-DB연동](#201214-로그인화면-db연동)
 - [20.12.15 el, jstl & 방명록(select)](#201215-el-jstl--방명록select)
-- [20.12.16 방명록](#201216-방명록)
+- [20.12.16 방명록insert, update, delete 및 흐름](#201216-방명록insert-update-delete-및-흐름)
 
 # 1. 제이쿼리
 
@@ -210,7 +210,7 @@ $('#each #btnEach')[0].onclick = function(){
 # 2. AJAX
 not yet
 # 3.[login, logout화면 초기구현](INDEX/201213.md)
-- login, logout화면 초기구현
+- 1.login, logout화면 초기구현
   - 1.1 동적include
   - 1.2. loninfo.jsp로 이동
     - 1.2.1. 로그인 이전 화면
@@ -226,12 +226,12 @@ not yet
 
 
 # 20.12.14 [로그인화면-DB연동](INDEX/201214.md)
-- 1. 로그인화면 구현
+- 1.로그인화면 구현
   - 1.1. MemberDao클래스 생성
   - 1.2. login.jsp수정
 <br>
 
-- 2. JSP
+- 2.JSP
   - 2.1. request(요청정보) 세부사용법
     - 2.1.1 파라미터 이름들을 Enumeration으로 받아 화면에 출력하시오
     - 2.1.2 파라미터의 구조들을 Map구조로 받아 화면에 출력하시오
@@ -240,7 +240,7 @@ not yet
 <br>
 
 # 20.12.15 [el, jstl & 방명록(select)](INDEX/201215.md)
-- 1. el표현식과 jstl
+- 1.el표현식과 jstl
 	- 1.1 jsp표현식과 el표현식
 		- 1.1.1 jsp표현식
 		- 1.1.2. jsp 스크립틀릿
@@ -265,4 +265,34 @@ not yet
 		- 2.3.1. 검색바
 		- 2.3.2. 방명록list
 
-# 20.12.16 [방명록](INDEX/201216.md)
+# 20.12.16 [방명록insert, update, delete 및 흐름](INDEX/201216.md)
+  - 1.방명록 Insert (흐름참고)
+	- 1.1. insert.jsp를 select.jsp에 정적으로 삽입
+	- 1.2. insert.jsp생성
+		- 1.2.1. 설계
+		- 1.3. guestbook.js 설계
+		- 1.4. insert_result.jsp
+			- 1.4.1. 한글 깨지는 것 방지위한 인코딩
+			- 1.4.2. useBean으로 Vo클래스 가져옴 & setProperty 활용
+			- 1.4.3. msg변수 설정해주고 request에 msg를 설정
+			- 1.4.4. script](#144-script)
+	- 1.3. Dao클래스의 insert메소드](#13-dao클래스의-insert메소드)
+- 2. 방명록 Update](#2-방명록-update)
+	- 2.1. Select.jsp](#21-selectjsp)
+	- 2.2 guestbook.js에서 funcUpdate function 추가
+	- 2.3. update_result.jsp](#23-update_resultjsp)
+		- 2.3.1. 한글 꺠짐 방지 위한 인코딩 작업
+		- 2.3.2. useBean과 Property사용
+		- 2.3.3. dao클래스의 update메소드에 vo삽입
+		- 2.3.4. script 부분](#234-script-부분)
+	- 2.4. GuestBookDao에서 update 메소드 추가
+- 3. 방명록 Delete
+	- 3.1. select.jsp에서 수정및 추가
+	- 3.2. guestbook.js에서 funcDelete function 추가
+	- 3.3. delete_result.jsp
+		- 3.3.1. UTF-8인코딩
+		- 3.3.2. useBean과 setProperty활용
+		- 3.3.3. dao클래스의 delete메소드에 vo삽입
+		- 3.3.4. script
+	- 3.4. GuestBookVo에서 delete메소드 추가
+- 4 방명록 흐름
