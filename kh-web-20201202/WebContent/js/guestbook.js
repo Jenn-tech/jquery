@@ -43,7 +43,7 @@ function funcDelete(frm){
 
 
 //─────────────────────────
-//3)방명록 삭제 버튼이 클릭된 경우
+//3)방명록 수정 버튼이 클릭된 경우
 //─────────────────────────
 function funcUpdate(frm){
 	if(frm.btnUpdate.value=='수정'){
