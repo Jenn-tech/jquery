@@ -1,1 +1,106 @@
 @charset "UTF-8";
+
+/*─────────공통부분─────────*/
+#member .btns{
+	text-align: center;	
+}
+
+#member .btns>input{
+	border-radius : 10px;
+	color : black;	
+}
+
+#member {
+	width : 100%;
+	padding-right : 20px;
+	box-sizing : border-box;
+}
+
+#member #frm_member input{
+	border-radius: 10px;
+}
+#member #frm_member>div{
+	display : inline-block;
+	text-align: right;
+	float : right;
+}
+
+#member .title{
+	margin-top : 6px;
+	background: #555;
+	padding : 4px 0;
+	color : #fff;
+}
+
+#member span {
+	display : inline-block;
+	text-align: center;
+}
+
+#member .no {width : 60px;}
+#member .mid {width : 100px;}
+#member .name {width : 120px;}
+#member .email {width : 200px;}
+#member .mdate{width : 110px;}
+
+#member .items>div{
+	line-height: 30px;
+}
+
+
+#member .items>div:hover{
+	background-color: #bbb;
+	cursor: pointer;
+}
+
+#member .items>div:last-child{
+	border-bottom: 2px solid #aaa;
+	margin-bottom: 14px;
+}
+
+#member .paging{
+	text-align: center;
+}
+#member .paging>input{
+	border-radius : 10px;
+	color : black;
+	}
+	
+#member .paging>input:hover{
+	cursor : pointer;
+	}
+	
+/*─────────insert──────────*/
+/* #member .insert{
+	position : relative;
+} */
+#member .insert>label{
+	display : inline-block;
+	width : 90px;
+	text-align: right;
+	line-height: 30px;
+}
+
+/* #member .insert>img{
+	position: absolute;
+	top : 5px;
+	right : 5px;
+}
+ */
+
+/*─────────update──────────*/
+#member .update>label{
+	display : inline-block;
+	width : 90px;
+	text-align: right;
+	line-height: 30px;
+}
+
+/*─────────view──────────*/
+
+#member .view>label{
+	display : inline-block;
+	width : 90px;
+	text-align: right;
+	line-height: 30px;
+}
