@@ -3,11 +3,17 @@
 	2020.12.16
  */
 
+var getID = function(id) {
+	return documetn.getElementById(id);
+}
+
+
 var guestbook = function() {
 	//─────────────────────────
 	//1)방명록 입력 버튼이 클릭된 경우
 	//─────────────────────────
-	var btnInsert = document.getElementById('btnInsert');
+//	var btnInsert = document.getElementById('btnInsert');
+	var btnInsert = getID('btnInsert');
 	
 	//javascript
 	if(btnInsert != null){
@@ -47,7 +53,7 @@ function funcDelete(frm){
 //─────────────────────────
 function funcUpdate(frm){
 	if(frm.btnUpdate.value=='수정'){
-		frm.doc.disabled = false;
+		frm.doc.disabled = false; //disable을 enable로 바꾼 것 
 		frm.btnUpdate.value='수정내용저장';
 	}else if(frm.btnUpdate.value=='수정내용저장'){
 		let pwd = prompt("수정된 내용을 저장하시려면 암호를 입력하세요");
