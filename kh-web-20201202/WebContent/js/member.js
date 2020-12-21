@@ -25,7 +25,6 @@ var member = function(){
 				frm.action = url + 'result.jsp';
 				frm.submit();	
 			}
-			
 		}
 	}
 	
