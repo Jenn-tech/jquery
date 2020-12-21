@@ -144,3 +144,10 @@ not yet
   - 4.1. page class 변수설정
   - 4.2. page class
   - 4.3. 페이징계산
+  - 4.3.2. pageCompute메소드 코드
+- 5.servlet
+  - 5.1. servlet 흐름
+  - 5.2. MemberServlet
+    - 5.2.1. HttpServlet상속
+    - 5.2.2. Anootation 선언 + urlPatterns지정
+    - 5.2.3. doGet() , doPost() 메소드를 오버라이딩
