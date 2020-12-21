@@ -4,6 +4,8 @@ package bean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MemberDao {
 	Connection conn; //database의 연결정보
@@ -36,4 +38,43 @@ public class MemberDao {
 			return b;
 		}
 	}
+	
+	
+	public List<MemberVo> select(){ 
+		List<MemberVo> volist = new ArrayList<MemberVo>();
+		try {
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return volist;
+		}
+	}
+	
+//	
+//	update(){
+//		
+//	}
+//	
+//	delete(){
+//		
+//	}
+//	
+//	select(){
+//		
+//	}
+//	
+//	view(){
+//		
+//	}
+//	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

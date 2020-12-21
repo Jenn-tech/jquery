@@ -8,16 +8,23 @@
 #member .btns>input{
 	border-radius : 10px;
 	color : black;	
+	
+	
 }
 
+#member input[type=button]{
+	cursor:pointer;
+}
 #member {
 	width : 100%;
 	padding-right : 20px;
 	box-sizing : border-box;
+	
 }
 
 #member #frm_member input{
 	border-radius: 10px;
+	
 }
 #member #frm_member>div{
 	display : inline-block;
@@ -103,4 +110,15 @@
 	width : 90px;
 	text-align: right;
 	line-height: 30px;
+}
+
+#member .result .result_msg{
+	margin : 30px auto;
+	width : 400px;
+	border : 2px solid orange;
+	border-radius : 20px;
+	padding : 20px;
+	box-sizing : border-box;
+	text-align : center;
+	box-shadow : 4px 4px 6px #999; 
 }

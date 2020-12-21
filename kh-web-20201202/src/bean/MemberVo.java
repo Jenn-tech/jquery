@@ -8,6 +8,21 @@ public class MemberVo {
 	String phone;
 	String zipcode;
 	String address;
+	String photo;
+	String delFile;
+	
+	public String getPhoto() {
+		return photo;
+	}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+	public String getDelFile() {
+		return delFile;
+	}
+	public void setDelFile(String delFile) {
+		this.delFile = delFile;
+	}
 	public String getMid() {
 		return mid;
 	}

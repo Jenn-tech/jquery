@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"  %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>회원관리조회(select)</title>
 <link rel = 'stylesheet' type = 'text/css' href='./css/member.css'>
+<script src ='./js/member.js'></script>
 </head>
 <body>
 <div id = 'member'>
@@ -13,8 +15,10 @@
 	<form name = 'frm_member' method = 'POST' id = 'frm_member'>
 		<input type = 'button' value = '입력' id = 'btnInsert' />
 		<div>
-			<input type = 'text' name = 'findStr' class = 'findStr'>
+			<input type = 'text' name = 'findStr' class = 'findStr' value = '${param.findStr }'>
 			<input type = 'button' value = '검색' id = 'btnFind' />
+			<input type = 'text' name = 'nowPage' value = '${param.nowPage }'/>
+			<input type = 'text' name = 'mid' />
 		</div>
 	</form>
 	<hr>
@@ -27,42 +31,33 @@
 	</div>
 	<hr>
 	<div class = 'items'>
-		<div class = 'item'>
-			<span class = 'no'>1</span>
-			<span class = 'mid'>hong</span>
-			<span class = 'name'>홍길동</span>
-			<span class = 'email'>hong@jobt.kr</span>
-			<span class = 'mdate'>2020-01-01</span>
-		</div>
-		<div >
-			<span class = 'no'>2</span>
-			<span class = 'mid'>kim</span>
-			<span class = 'name'>김부자</span>
-			<span class = 'email'>kim@jobt.kr</span>
-			<span class = 'mdate'>2020-02-01</span>
-		</div>
-		<div >
-			<span class = 'no'>3</span>
-			<span class = 'mid'>lee</span>
-			<span class = 'name'>이기자</span>
-			<span class = 'email'>lee@jobt.kr</span>
-			<span class = 'mdate'>2020-03-01</span>
-		</div>
+		<c:forEach var = 'vo' begin = '1' end = '10'>
+			<div class = 'item' onclick = "view('${vo}')">
+				<span class = 'no'>${vo }</span>
+				<span class = 'mid'>hong</span>
+				<span class = 'name'>홍길동</span>
+				<span class = 'email'>hong@jobt.kr</span>
+				<span class = 'mdate'>2020-01-01</span>
+			</div>
+		</c:forEach>
+		
 	</div>
 
 	<div class = 'paging'>
-		<input type = 'button' value = '처음' id = 'btnFirst' />
-		<input type = 'button' value = '이전' id = 'btnPrev' />
+		<input type = 'button' value = '처음' id = 'btnFirst' onclick = 'goPage(1)'/>
+		<input type = 'button' value = '이전' id = 'btnPrev' onclick = 'goPage()'/>
 	
-		<input type = 'button' value = '1' />
-		<input type = 'button' value = '2'  />
-		<input type = 'button' value = '3'  />
-		<input type = 'button' value = '4'  />
-		<input type = 'button' value = '5'  />
+	
+		<c:forEach var = "i" begin = '1' end='5'>
+			<input type = 'button' value = '${i }'  
+					"${(param.nowPage==i)? 'disabled' : '' }"
+					onclick = 'goPage(${i})'/>
+		</c:forEach>
 		
-		<input type = 'button' value = '다음' id = 'btnNext'  />
-		<input type = 'button' value = '맨끝' id = 'btnLast' />
+		<input type = 'button' value = '다음' id = 'btnNext' onclick = 'goPage()'/>
+		<input type = 'button' value = '맨끝' id = 'btnLast' onclick = 'goPage()'/>
 	</div>
 </div>
+<script>member()</script>
 </body>
 </html>

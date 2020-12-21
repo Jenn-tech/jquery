@@ -20,8 +20,10 @@
 
 			<!-- 첫글자는 대문자고 나머지는 영소문자 다 가능 하며 8자 이상 20미만 pattern='^[A-Z][A-Za-z0-9]{8,20}$' -->
 			<input type='text' id='mid' name='mid' size='18' value='kim' /> <br />
-			<label for='pwd'>암호</label><br /> <input type='password' id='pwd'
-				name='pwd' size='18' value='1111' /> <br /> <input type='button'
+			<label for='pwd'>암호</label><br /> 
+			<input type='password' id='pwd'
+				name='pwd' size='18' value='1111' /> <br /> 
+			<input type='button'
 				id='btnLogin' value='로그인' />
 		</form>
 
