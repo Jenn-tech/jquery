@@ -7,6 +7,7 @@
 - [20.12.14 로그인화면-DB연동](#201214-로그인화면-db연동)
 - [20.12.15 el, jstl & 방명록(select)](#201215-el-jstl--방명록select)
 - [20.12.16 방명록insert, update, delete 및 흐름](#201216-방명록insert-update-delete-및-흐름)
+- [20.12.21](#201221)
 
 # [제이쿼리](INDEX/201212.md)
 - 1.제이쿼리](#1-제이쿼리)
@@ -116,3 +117,6 @@ not yet
 		- 3.3.4. script
 	- 3.4. GuestBookVo에서 delete메소드 추가
 - 4 방명록 흐름
+
+
+# 20.12.21
