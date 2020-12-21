@@ -8,8 +8,10 @@ public class Page {
 	int startNo;
 	int endNo;
 	int nowPage;
-	int listSize = 10;
-	int blockSize = 5;
+	
+	//조정가능
+	int listSize = 3;
+	int blockSize = 2;
 	
 	String findStr;
 	
@@ -24,6 +26,11 @@ public class Page {
 		totPage = (int)(Math.ceil(totListSize/(double)listSize));
 		endNo = nowPage * listSize;
 		startNo = endNo - listSize + 1;
+		if(endNo > totListSize) endNo = totListSize;
+		
+		endPage = (int)(Math.ceil(nowPage/(double)blockSize)) * blockSize;
+		startPage = endPage-blockSize + 1;
+		if(endPage > totPage) endPage = totPage;
 		
 	}
 

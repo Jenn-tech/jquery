@@ -40,7 +40,7 @@ public class MemberDao {
 	}
 	
 	
-	public List<MemberVo> select(){ 
+	public List<MemberVo> select(Page page){ 
 		List<MemberVo> volist = new ArrayList<MemberVo>();
 		try {
 			
@@ -51,30 +51,63 @@ public class MemberDao {
 		}
 	}
 	
-//	
-//	update(){
-//		
-//	}
-//	
-//	delete(){
-//		
-//	}
-//	
-//	select(){
-//		
-//	}
-//	
-//	view(){
-//		
-//	}
-//	
+
+	public String insert(MemberVo vo) {
+		String msg = "회원정보가 정상적으로 저장되었습니다.";
+	try {
+			
+		
+		
+		
+		} catch (Exception ex) {
+			msg = ex.getMessage();
+		}finally {
+			return msg;
+			}
+		}
 	
+
+	public String update(MemberVo vo) {
+		String msg = "회원정보가 정상적으로 수정되었습니다.";
+		try {
+			
+			
+			
+			
+		} catch (Exception ex) {
+			msg = ex.getMessage();
+		}finally {
+			return msg;
+		}
+	}
 	
-	
-	
-	
-	
-	
+	public String delete(MemberVo vo) {
+		String msg = "회원정보가 정상적으로 삭제되었습니다.";
+		try {
+			
+			
+			
+			
+		} catch (Exception ex) {
+			msg = ex.getMessage();
+		}finally {
+			return msg;
+		}
+	}
+
+	public MemberVo view(String mid) {
+		MemberVo vo = new MemberVo();
+		try {
+			
+			
+			
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return vo;
+		}
+	}
 	
 	
 }
