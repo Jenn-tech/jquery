@@ -1,29 +1,42 @@
-/**
- * 회원관리에 관련된 스크립트
- */
-
 function getID(id){ return document.getElementById(id)}
 
 var member = function(){
 	let url = 'index.jsp?inc=./member/';
 	
 	var btnInsert = getID('btnInsert');
-	var btnFind = getID('btnFind');
+	var btnFind   = getID('btnFind');
 	var btnSelect = getID('btnSelect');
-	var btnSave = getID('btnSave');
+	var btnSave   = getID('btnSave');
 	var btnFindZip = getID('btnFindZip');
-	var btnPhoto = getID('btnPhoto');
+	var btnPhoto  = getID('btnPhoto');
 	var btnModify = getID('btnModify');
 	var btnUpdate = getID('btnUpdate');
 	var btnDelete = getID('btnDelete');
-	
+/*	
 	if(btnDelete != null){
 		btnDelete.onclick = function(){
 			var frm = document.frm_member;
 			var pwd = prompt("회원정보를 삭제하시려면 암호를 입력하세요");
 			if(pwd != null){
-				frm.action = url + 'result.jsp';
-				frm.submit();	
+				frm.action = 'member.do?job=delete';
+				frm.pwd.value = pwd;
+				frm.mid.disabled=false;
+				frm.submit();
+			}
+		}
+	}
+	*/
+	if(btnDelete != null){
+		btnDelete.onclick = function(){
+			var frm = document.frm_member;
+			//var pwd = prompt("회원정보를 삭제하시려면 암호를 입력하세요");
+			var win = window.open('./member/input_pwd.jsp', 'win', 'width: 400px, height: 500px, left: 300px, top: 300px' );
+			win.onbeforeunload = function() {
+					if(frm.pwd.value != ''){
+					frm.action = 'member.do?job=delete';
+					frm.mid.disabled =false;
+					frm.submit();
+				}
 			}
 		}
 	}
@@ -31,27 +44,38 @@ var member = function(){
 	if(btnUpdate != null){
 		btnUpdate.onclick = function(){
 			var frm = document.frm_member;
-			frm.action= url+ 'result.jsp';
+			
+			var pwd = prompt("회원정보를 수정하시려면 암호 입력");
+			if(pwd == null){
+				return;
+			}
+			frm.pwd.value = pwd;
+			//frm.enctype = 'multipart/form-data';
+			frm.enctype = 'multipart/form-data';
+			frm.action = 'member.do?job=update';
 			frm.submit();
 		}
 	}
 	
 	if(btnModify != null){
 		btnModify.onclick = function(){
-		var frm = document.frm_member;
-		frm.action = url + 'update.jsp';
-		frm.submit();
+			var frm = document.frm_member;
+			frm.mid.disabled = false;
+			frm.action ='member.do?job=modify';
+			frm.submit();
 		}
-		
 	}
-	//이미지 파일 미리보기
+	
+	
+	
+	// 이미지 파일 미리보기
 	if(btnPhoto != null){
-		btnPhoto.onchange = function(evt){ //클릭아니고 체인지될때
-			var tag = evt.srcElement; //이벤트 발생한 태그
-			var url = tag.files[0]; //선택된 파일명
+		btnPhoto.onchange = function(ev){
+			var tag = ev.srcElement; // 이벤트 발생한 태그
+			var url = tag.files[0]; // 선택된 파일명
 			var reader = new FileReader();
-			reader.readAsDataURL(url); //file이 reader로 읽혀짐
-			reader.onload = function(e){ //읽기 작업이 끝났다면
+			reader.readAsDataURL(url);
+			reader.onload = function(e){
 				var img = new Image();
 				img.src = e.target.result;
 				var photo = getID('photo');
@@ -60,12 +84,15 @@ var member = function(){
 		}
 	}
 	
-	//다음 우편번호 검색 API를 사용한 주소 찾기
+	
+	
+	
+	// 다음 우편번호 검색 API를 사용한 주소 찾기
 	if(btnFindZip != null){
 		btnFindZip.onclick = function(){
 			var frm = document.frm_member;
 			new daum.Postcode({
-				oncomplete : function(data){   //우편번호 정상적으로 입력했다면
+				oncomplete : function(data){
 					frm.zipcode.value = data.zonecode;
 					frm.address.value = data.address;
 				}
@@ -73,36 +100,67 @@ var member = function(){
 		}
 	}
 	
+	
+	
 	if(btnSave != null){
 		btnSave.onclick = function(){
 			var frm = document.frm_member;
-			//frm.enctype = 'multipart/form-data';
-			frm.action = url + 'result.jsp';
+			var checkFlag = true;
+			
+			if(!frm.mid.checkValidity()){
+				alert('mid');
+				checkFlag = false;
+			}else if(!frm.name.checkValidity()){
+				alert('name');
+				checkFlag = false;
+			}else if(!frm.pwd.checkValidity()){
+				alert('pwd');
+				checkFlag = false;
+			}else if(!frm.email.checkValidity()){
+				alert('email');
+				checkFlag = false;
+			}else if(!frm.phone.checkValidity()){
+				alert('phone');
+				checkFlag = false;
+			}
+			
+			//암호와 암호확인의 일치여부
+			if(frm.pwd.value != frm.pwdConfirm.value){
+				alert('암호를 확인해 주소~');
+				return;
+			}
+			if(checkFlag){
+			frm.enctype = 'multipart/form-data';
+			frm.action = 'member.do?job=insert';
 			frm.submit();
+			}
 		}
-		
 	}
+	
+	
 	if(btnSelect != null){
 		btnSelect.onclick = function(){
 			var frm = document.frm_member;
-			frm.action = url + 'select.jsp';
+			frm.action = 'member.do?job=select';
 			frm.submit();
 		}
 	}
 	
+	
 	if(btnFind != null){
 		btnFind.onclick = function(){
 			var frm = document.frm_member;
-			frm.action = url + 'select.jsp';
+			frm.action = "member.do?job=select";
 			frm.nowPage.value = 1;
 			frm.submit();
 		}
 	}
-		
-	//$('#btnInsert').on('click', function(){...})''
+	
+	
+	//$('#btnInsert').on('click', function(){ ... });
 	if(btnInsert != null){
 		btnInsert.onclick = function(){
-			var frm = document.frm_member //form tag name, id값으로 접근해도됨
+			var frm = document.frm_member;
 			frm.action = url + 'insert.jsp';
 			frm.submit();
 		}
@@ -110,19 +168,15 @@ var member = function(){
 }
 
 function goPage(page){
-	let url = 'index.jsp?inc=./member/';
-
 	var frm = document.frm_member;
-	frm.action = url + 'select.jsp';
+	frm.action = 'member.do?job=select';
 	frm.nowPage.value = page;
 	frm.submit();
 }
-
 function view(mid){
-	let url = 'index.jsp?inc=./member/';
-
 	var frm = document.frm_member;
-	frm.action = url + 'view.jsp';
-	frm.mid.value = mid;  
+	frm.action = 'member.do?job=view';
+	frm.mid.value = mid;
 	frm.submit();
 }
+

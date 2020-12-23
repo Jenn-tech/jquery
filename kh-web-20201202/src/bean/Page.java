@@ -8,31 +8,29 @@ public class Page {
 	int startNo;
 	int endNo;
 	int nowPage;
-	
-	//조정가능
-	int listSize = 3;
-	int blockSize = 2;
+	int listSize=3;
+	int blockSize=2;
 	
 	String findStr;
 	
 	public Page() {}
-	public Page(int totListSize, int nowPage) {
-		this.totListSize = totListSize;
-		this.nowPage = nowPage;
+	public Page(int tot, int now) {
+		this.totListSize = tot;
+		this.nowPage = now;
 		pageCompute();
 	}
-
+	
 	public void pageCompute() {
 		totPage = (int)(Math.ceil(totListSize/(double)listSize));
 		endNo = nowPage * listSize;
-		startNo = endNo - listSize + 1;
-		if(endNo > totListSize) endNo = totListSize;
+		startNo = endNo -listSize + 1;
+		if(endNo>totListSize) endNo = totListSize;
 		
-		endPage = (int)(Math.ceil(nowPage/(double)blockSize)) * blockSize;
-		startPage = endPage-blockSize + 1;
-		if(endPage > totPage) endPage = totPage;
-		
+		endPage = (int)(Math.ceil(nowPage/(double)blockSize))*blockSize;
+		startPage = endPage-blockSize+1;
+		if(endPage>totPage) endPage = totPage;
 	}
+
 
 	public int getTotListSize() {
 		return totListSize;

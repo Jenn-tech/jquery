@@ -10,7 +10,15 @@ public class MemberVo {
 	String address;
 	String photo;
 	String delFile;
+	String mdate;
 	
+	
+	public String getMdate() {
+		return mdate;
+	}
+	public void setMdate(String mdate) {
+		this.mdate = mdate;
+	}
 	public String getPhoto() {
 		return photo;
 	}

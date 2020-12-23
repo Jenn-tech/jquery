@@ -51,8 +51,8 @@
 				<input type = 'button' value = '목록' id = 'btnSelect' />
 				
 				<!-- 원래 hidden -->
-				<input type = 'text' name = 'findStr' value = '${param.findStr }' />
-				<input type = 'text' name = 'nowPage' value = '${param.nowPage }' />
+				<input type = 'hidden' name = 'findStr' value = '${param.findStr }' />
+				<input type = 'hidden' name = 'nowPage' value = '${param.nowPage }' />
 			</div>
 		</form>
 	</div>
