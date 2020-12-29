@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"  %>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src ='./js/board.js'></script>
+
 </head>
 <body>
 <div id = 'board'>
@@ -14,9 +18,12 @@
 	<form name = 'frm_board' method = 'POST'>
 		<input type = 'button' value = '목록' id = 'btnSelect' />
 		
+			<input type = 'text' name = 'findStr' value = '${param.findStr }'/>
+			<input type = 'text' name = 'nowPage' value = '${param.nowPage }'/>
 		
 	</form>
 
 </div>
+<script>board()</script>
 </body>
 </html>

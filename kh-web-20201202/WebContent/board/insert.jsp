@@ -13,7 +13,7 @@
 <body>
 	<div id = 'board'>
 		<h2 class = 'title_main'>게시판</h2>
-		<form name = 'frm_board' method = 'POST'>
+		<form name = 'frm_board' method = 'POST' >
 			<label>아이디</label>
 			<input type = 'text' name = 'mid' placeholder='영숫자와 !$-_만 가능' /><br>
 			
@@ -37,11 +37,11 @@
 			<div class = 'btns'>
 				<input type = 'button' value = '저장' id = 'btnSave'/><br>
 				<input type = 'button' value = '목록' id = 'btnSelect'/><br>
-				
-			
 			</div>
 
 
+			<input type = 'text' name = 'findStr' value = '${param.findStr }'/>
+			<input type = 'text' name = 'nowPage' value = '${param.nowPage }'/>
 
 		</form>
 	
@@ -49,6 +49,7 @@
 	
 	
 	
-	
+<script>board()</script>
 </body>
 </html>
+
