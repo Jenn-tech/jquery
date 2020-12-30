@@ -10,15 +10,15 @@
 <script src='./js/board.js'></script>
 </head>
 <body>
-<div id='borad'>
+<div id='board'>
    <h2 class='title_main'>게시판</h2>
    <form name='frm_board' method='post'>
       <input type='button' id='btnInsert' value='입력' />
+      <input type='text' name='nowPage' value='${(empty param.nowPage)? 1 : param.nowPage }' />
+      <input type = 'text' name = 'serial' value = '0'/>
       <div>
          <input type='text' name='findStr' id='findStr' value='${param.findStr }' />
          <input type='button' name='btnFind' id='btnFind' value='조회' />
-         <input type='text' name='nowPage' value='${(empty param.nowPage)? 1 : param.nowPage }' />
-         <input type = 'text' name = 'serial' value = '0'/>
       </div>
    </form>
    
