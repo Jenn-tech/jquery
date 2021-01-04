@@ -1,5 +1,7 @@
 package board;
 
+import java.util.List;
+
 public class BoardVo {
 	int serial ;
     String mid ;
@@ -9,6 +11,10 @@ public class BoardVo {
     String mdate; 
     int hit ;
     int pserial ;
+    int attCnt;
+    
+    List<BoardAttVo> attList;
+    List<BoardAttVo> delFiles;
 	public int getSerial() {
 		return serial;
 	}

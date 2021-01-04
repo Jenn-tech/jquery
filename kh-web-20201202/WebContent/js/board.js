@@ -7,6 +7,7 @@
  var board = function()	{
 	var frm = document.frm_board;
 	var url = 'index.jsp?inc=./board/';
+	var job = "board.do?job=";
 	
 	var btnInsert = getID('btnInsert');
 	var btnSelect = getID('btnSelect');
@@ -18,26 +19,28 @@
 	var btnRepl = getID('btnRepl');
 	var btnReplSave = getID('btnReplSave');
 	
-	if(btnReplSave != null){
+	if(btnReplSave != null){//댓글저장
 		btnReplSave.onclick = function(){
-			frm.action = url + 'result.jsp';
+			frm.enctype = 'multipart/form-data';
+			frm.action = job + 'replR';
 			frm.submit();
 		}
 	}
 	
-	if(btnRepl != null){
+	if(btnRepl != null){//댓글 작성화면
 		btnRepl.onclick = function(){
-			frm.action = url + 'repl.jsp';
+			frm.action = job + 'repl';
 			frm.submit();
 		}
 	}
 	
-	if(btnUpdate != null){
+	if(btnUpdate != null){//게시물수정저장
 		btnUpdate.onclick = function(){
 			var pwd = prompt("수정하려면 암호를 입력하세요");
 			if(pwd != null){
 				frm.pwd.value = pwd;
-				frm.action = url + 'result.jsp';
+				frm.enctype = 'multipart/form-data';
+				frm.action = job + 'updateR';
 				frm.submit();
 			}
 		}
@@ -45,16 +48,17 @@
 	
 	if(btnModify != null){
 		btnModify.onclick = function(){
-			frm.action = url + 'update.jsp';
+			frm.action = job + 'update';
 			frm.submit();
 		}
 	}
 	
 	if(btnDelete != null){
 		btnDelete.onclick = function(){
-			var yn = confirm("정말 삭제하시겠습니까?");
-			if(yn){
-				frm.action = url + 'result.jsp';
+			var pwd = prompt("정말 삭제하시겠습니까?");
+			if(pwd != null){
+				frm.pwd.value = pwd;
+				frm.action = job + 'deleteR';
 				frm.submit();
 			}
 		}
@@ -63,20 +67,20 @@
 	if(btnFind != null){
 		btnFind.onclick = function() {
 			frm.nowPage.value = 1;
-			frm.action = url + 'select.jsp';
+			frm.action = job + 'select';
 			frm.submit();
 		}
 	}
 	
 	if(btnSave != null){
 		btnSave.onclick = function(){
-			frm.action = url + 'result.jsp';
+			frm.action = job + 'result';
 			frm.submit();
 		}
 	}
 	if(btnSelect != null){
 		btnSelect.onclick = function() {
-			frm.action = url + 'select.jsp';
+			frm.action = job + 'select';
 			frm.submit();
 		}
 	}
@@ -84,7 +88,7 @@
 	
 	if(btnInsert != null){
 		btnInsert.onclick = function(){
-			frm.action = url + 'insert.jsp';
+			frm.action = job + 'insert';
 			frm.submit();
 	}
 			
@@ -92,16 +96,18 @@
 }
 
 function goPage(page){
+		var job = "board.do?job=";
 	var frm = document.frm_board;
 	frm.nowPage.value = page;
-	frm.action = 'index.jsp?inc=./board/select.jsp';
+	frm.action = job + 'select';
 	frm.submit();
 }
 
 function view(serial){ //pk가 serial이라서
+		var job = "board.do?job=";
 	var frm = document.frm_board;
 	frm.serial.value = serial;
-	frm.action = 'index.jsp?inc=./board/view.jsp';
+	frm.action = job + 'view';
 	frm.submit();
 }
 

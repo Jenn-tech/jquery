@@ -25,19 +25,13 @@
 		
 		
 			<label>첨부</label>
-			<div>
-				<img src = 'http://placehold.it/150x100' />
-				<img src = 'http://placehold.it/150x100' />
-				<img src = 'http://placehold.it/150x100' />
+			<div class='inner'>
 				<img src = 'http://placehold.it/150x100' />
 			</div>
 
 			<label>새첨부</label>
-			<div id = 'attach_zone'>
-				<img src = 'http://placehold.it/150x100' />
-				<img src = 'http://placehold.it/150x100' />
-				<img src = 'http://placehold.it/150x100' />
-				<img src = 'http://placehold.it/150x100' />
+			<div id = 'attach_zone' class='inner'>
+				
 			</div>
 			
 			<div class = 'btns'>

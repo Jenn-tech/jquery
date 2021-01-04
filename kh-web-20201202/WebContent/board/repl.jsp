@@ -9,6 +9,8 @@
 <title>게시판</title>
 <link rel = 'stylesheet' type = 'text/css' href='./css/board.css'>
 <script src ='./js/board.js'></script>
+<script src ='./js/file_upload.js'></script>
+
 </head>
 <body>
 	<div id = 'board'>
@@ -50,7 +52,8 @@
 	
 	
 	
-<script>board()</script>
+<script>board();
+fileUpload('attach_zone');</script>
 </body>
 </html>
 
